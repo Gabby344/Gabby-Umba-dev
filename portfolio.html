@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Gabby Umba - Projets Full Stack</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* CSS DU PORTFOLIO */
+        :root { --white: #FFFFFF; --black: #1A1A1A; --accent: #00A36C; --accent-dark: #007C53; --light-grey: #F5F5F5; --dark-grey: #4A4A4A; --font-heading: 'Helvetica Neue', Arial, sans-serif; --font-body: 'Arial', sans-serif; --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.05); --shadow-pro: 0 10px 30px rgba(0, 0, 0, 0.1); --transition: 0.3s ease-in-out; --border-radius: 8px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-body); color: var(--black); background-color: var(--white); line-height: 1.6; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3 { font-family: var(--font-heading); font-weight: 700; line-height: 1.2; }
+        a { color: var(--accent); text-decoration: none; transition: color var(--transition); }
+        a:hover { color: var(--accent-dark); }
+        .section-padded { padding: 80px 0; }
+        nav { background-color: var(--white); padding: 20px 0; box-shadow: var(--shadow-light); position: sticky; top: 0; z-index: 100; }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.8em; font-weight: 900; color: var(--black); }
+        .accent-dot { color: var(--accent); }
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        nav a { font-weight: 600; font-size: 1.05em; padding: 5px 0; position: relative; color: var(--dark-grey); }
+        nav a:after { content: ''; position: absolute; width: 0; height: 3px; bottom: -5px; left: 0; background-color: var(--accent); transition: width var(--transition); }
+        nav a:hover:after, nav a.active:after { width: 100%; }
+        .btn { padding: 12px 25px; border-radius: var(--border-radius); font-weight: 600; display: inline-block; transition: all var(--transition); border: 2px solid transparent; cursor: pointer; text-align: center; }
+        .primary-btn { background-color: var(--accent); color: var(--white); }
+        .primary-btn:hover { background-color: var(--accent-dark); transform: translateY(-2px); }
+        .small-btn { padding: 8px 18px; font-size: 0.9em; }
+        .btn i { margin-right: 5px; }
+        .page-header { background-color: var(--light-grey); padding: 80px 0; text-align: center; margin-bottom: 50px; }
+        .page-header h2 { font-weight: 900; margin-bottom: 10px; }
+        .page-header p { font-size: 1.2em; color: var(--dark-grey); }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; padding-bottom: 80px; }
+        .project-card { background: var(--white); border-radius: var(--border-radius); box-shadow: var(--shadow-pro); overflow: hidden; transition: transform var(--transition); }
+        .project-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); }
+        .project-card img { width: 100%; height: 250px; object-fit: cover; transition: filter 0.5s; }
+        .project-info { padding: 25px; text-align: left; }
+        .project-info h4 { font-size: 1.6em; margin-bottom: 8px; color: var(--black); font-weight: 800; }
+        .project-tags { font-size: 0.9em; color: var(--accent-dark); font-weight: 600; margin-bottom: 15px; }
+        .project-description { color: var(--dark-grey); margin-bottom: 20px; }
+        .case-study-link { font-weight: 600; display: flex; align-items: center; }
+        .case-study-link i { margin-left: 5px; font-size: 0.8em; }
+        footer { background-color: var(--black); color: var(--light-grey); padding: 60px 0 20px; text-align: left; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 2fr; gap: 50px; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--dark-grey); }
+        .footer-info h4 { color: var(--accent); margin-bottom: 10px; font-size: 1.5em; }
+        .footer-contact i { margin-right: 10px; color: var(--accent); }
+        .footer-contact p { line-height: 2; }
+        .copyright { text-align: center; font-size: 0.85em; color: var(--dark-grey); }
+
+        @media (max-width: 992px) {
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+        }
+        @media (max-width: 768px) {
+            nav .container { flex-direction: column; gap: 15px; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .page-header { padding: 50px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <h1 class="logo">Gabby Umba <span class="accent-dot">.</span></h1>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="#" class="active">Portfolio</a></li>
+                <li><a href="#contact" class="btn primary-btn small-btn">
+                    <i class="fas fa-code"></i> Contact
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h2>Démonstration de Compétences Techniques 🚀</h2>
+            <p>Chaque projet est une étude de cas en ingénierie logicielle, de la base de données à l'interface utilisateur.</p>
+        </div>
+    </header>
+
+    <section class="section-padded">
+        <div class="container portfolio-grid">
+
+            <div class="project-card">
+                <img src="project_saas_dashboard.jpg" alt="Capture d'écran de la plateforme d'analyse" loading="lazy">
+                <div class="project-info">
+                    <h4>Plateforme d'Analyse Logistique</h4>
+                    <p class="project-tags">Node.js | React | PostgreSQL | AWS</p>
+                    <p class="project-description">Conception et développement Full Stack d'un tableau de bord pour l'optimisation des flux logistiques en temps réel. Mise à l'échelle pour 1000+ utilisateurs.</p>
+                    <a href="[LIEN_VERS_ETUDE_DE_CAS]" class="case-study-link">Voir l'Étude Technique <i class="fas fa-long-arrow-alt-right"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="project_mobile_app.jpg" alt="Mockup d'une application de gestion mobile" loading="lazy">
+                <div class="project-info">
+                    <h4>Application de Gestion des Ressources</h4>
+                    <p class="project-tags">React Native | Express.js | MongoDB</p>
+                    <p class="project-description">Développement d'une application mobile hybride (iOS/Android) pour la gestion d'inventaire sur site, avec synchronisation hors ligne.</p>
+                    <a href="[LIEN_VERS_ETUDE_DE_CAS]" class="case-study-link">Voir l'Étude Technique <i class="fas fa-long-arrow-alt-right"></i></a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="project_performant_site.jpg" alt="Capture d'écran d'un site vitrine haute performance" loading="lazy">
+                <div class="project-info">
+                    <h4>Site Vitrine Haute Performance (e-commerce)</h4>
+                    <p class="project-tags">Vue.js | Nuxt.js | Strapi CMS | Vercel</p>
+                    <p class="project-description">Migration d'un site e-commerce vers une architecture Jamstack pour une vitesse de chargement et un SEO exceptionnels.</p>
+                    <a href="[LIEN_VERS_ETUDE_DE_CAS]" class="case-study-link">Voir l'Étude Technique <i class="fas fa-long-arrow-alt-right"></i></a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <h4>Gabby Umba <span class="accent-dot">.</span></h4>
+                    <p>Code Robuste. Performance Inégalée.</p>
+                    <div class="social-links" style="margin-top: 15px; display: flex; gap: 15px;">
+                        <a href="[VOTRE_LIEN_LINKEDIN]" style="color: var(--light-grey); font-size: 1.2em;"><i class="fab fa-linkedin"></i></a>
+                        <a href="[VOTRE_LIEN_GITHUB]" style="color: var(--light-grey); font-size: 1.2em;"><i class="fab fa-github"></i></a>
+                        <a href="[VOTRE_LIEN_TWITTER]" style="color: var(--light-grey); font-size: 1.2em;"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h5>Navigation</h5>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h5>Démarrons un Projet</h5>
+                    <p>
+                        <i class="fas fa-envelope"></i> 
+                        <a href="mailto:contact@gabbyumba.com" style="color: var(--light-grey);">contact@gabbyumba.com</a>
+                    </p>
+                    <p>
+                        <i class="fas fa-phone"></i> 
+                        <a href="tel:+XXNXXXXXXXXXX" style="color: var(--light-grey);">+XX XXX XX XX XX</a>
+                    </p>
+                    <p style="margin-top: 10px;"><i class="fas fa-map-marker-alt"></i> Basé à Kolwezi (RDC)</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Gabby Umba. Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
