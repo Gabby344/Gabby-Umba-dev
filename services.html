@@ -7,10 +7,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* CSS DU SERVICES */
-        :root { --white: #FFFFFF; --black: #1A1A1A; --accent: #00A36C; --accent-dark: #007C53; --light-grey: #F5F5F5; --dark-grey: #4A4A4A; --font-heading: 'Helvetica Neue', Arial, sans-serif; --font-body: 'Arial', sans-serif; --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.05); --shadow-pro: 0 10px 30px rgba(0, 0, 0, 0.1); --transition: 0.3s ease-in-out; --border-radius: 8px; }
+        /* CSS DU SERVICES AMÉLIORÉ */
+        :root { 
+            --white: #FFFFFF; 
+            --black: #1A1A1A; 
+            --accent: #00A36C; 
+            --accent-dark: #007C53; 
+            --light-grey: #F5F5F5; 
+            --dark-grey: #4A4A4A; 
+            --font-heading: 'Helvetica Neue', Arial, sans-serif; 
+            --font-body: 'Arial', sans-serif; 
+            --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.05); 
+            --shadow-pro: 0 10px 30px rgba(0, 0, 0, 0.1); 
+            --transition: 0.3s ease-in-out; 
+            --border-radius: 12px;
+        }
+        
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: var(--font-body); color: var(--black); background-color: var(--white); line-height: 1.6; }
+        body { font-family: var(--font-body); color: var(--black); background-color: var(--white); line-height: 1.6; overflow-x: hidden; }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
         h1, h2, h3 { font-family: var(--font-heading); font-weight: 700; line-height: 1.2; }
         h2 { font-size: clamp(2.5em, 5vw, 3.5em); }
@@ -19,7 +33,38 @@
         a { color: var(--accent); text-decoration: none; transition: color var(--transition); }
         a:hover { color: var(--accent-dark); }
         .section-padded { padding: 80px 0; }
-        nav { background-color: var(--white); padding: 20px 0; box-shadow: var(--shadow-light); position: sticky; top: 0; z-index: 100; }
+        
+        /* ANIMATIONS SCROLL */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* NAVIGATION */
+        nav { background-color: var(--white); padding: 20px 0; box-shadow: var(--shadow-light); position: sticky; top: 0; z-index: 1000; }
         nav .container { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.8em; font-weight: 900; color: var(--black); }
         .accent-dot { color: var(--accent); }
@@ -27,43 +72,235 @@
         nav a { font-weight: 600; font-size: 1.05em; padding: 5px 0; position: relative; color: var(--dark-grey); }
         nav a:after { content: ''; position: absolute; width: 0; height: 3px; bottom: -5px; left: 0; background-color: var(--accent); transition: width var(--transition); }
         nav a:hover:after, nav a.active:after { width: 100%; }
+        
+        /* BOUTONS */
         .btn { padding: 12px 25px; border-radius: var(--border-radius); font-weight: 600; display: inline-block; transition: all var(--transition); border: 2px solid transparent; cursor: pointer; text-align: center; }
         .primary-btn { background-color: var(--accent); color: var(--white); }
-        .primary-btn:hover { background-color: var(--accent-dark); transform: translateY(-2px); }
+        .primary-btn:hover { background-color: var(--accent-dark); transform: translateY(-3px); box-shadow: var(--shadow-pro); }
+        .secondary-btn { background-color: transparent; border-color: var(--dark-grey); color: var(--dark-grey); }
+        .secondary-btn:hover { background-color: var(--dark-grey); color: var(--white); transform: translateY(-3px); }
         .small-btn { padding: 8px 18px; font-size: 0.9em; }
-        .btn i { margin-right: 5px; }
-        .page-header { background-color: var(--light-grey); padding: 80px 0; text-align: center; margin-bottom: 50px; }
-        .page-header h2 { font-weight: 900; margin-bottom: 10px; }
-        .page-header p { font-size: 1.2em; color: var(--dark-grey); }
-        .service-block { display: flex; align-items: flex-start; gap: 50px; margin-bottom: 80px; padding: 40px; border-radius: var(--border-radius); box-shadow: var(--shadow-light); background-color: var(--white); }
-        .service-block:nth-child(even) { flex-direction: row-reverse; background-color: var(--light-grey); }
-        .service-icon-box { flex-shrink: 0; width: 150px; height: 150px; background-color: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-        .service-icon-box i { font-size: 3.5em; color: var(--black); }
-        .service-content { flex-grow: 1; text-align: left; }
-        .service-content h4 { margin-bottom: 15px; color: var(--accent-dark); }
-        .service-content p { color: var(--dark-grey); margin-bottom: 15px; }
-        .service-content li { margin-bottom: 8px; color: var(--black); font-weight: 500; }
-        .service-content li i { color: var(--accent); margin-right: 10px; }
-        .section-cta { text-align: center; padding: 60px 0; background-color: var(--accent); color: var(--white); box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05); }
-        .section-cta h3 { margin-bottom: 10px; }
-        .section-cta p { font-size: 1.2em; margin-bottom: 25px; }
+        .large-btn { padding: 15px 40px; font-size: 1.1em; }
         .dark-btn { background-color: var(--black); color: var(--white); border-color: var(--black); }
-        .dark-btn:hover { background-color: var(--dark-grey); transform: translateY(-2px); }
+        .dark-btn:hover { background-color: var(--dark-grey); transform: translateY(-3px); box-shadow: var(--shadow-pro); }
+        .btn i { margin-right: 5px; }
+
+        /* HEADER */
+        .page-header { 
+            background: linear-gradient(135deg, var(--light-grey) 0%, #e8f4f1 100%); 
+            padding: 100px 0; 
+            text-align: center; 
+            margin-bottom: 50px; 
+            position: relative;
+            overflow: hidden;
+        }
+        .page-header h2 { font-weight: 900; margin-bottom: 15px; }
+        .page-header p { font-size: 1.3em; color: var(--dark-grey); max-width: 600px; margin: 0 auto; }
+
+        /* SERVICES AMÉLIORÉS */
+        .services-container { max-width: 1200px; margin: 0 auto; }
+        .service-block { 
+            display: flex; 
+            align-items: center; 
+            gap: 60px; 
+            margin-bottom: 80px; 
+            padding: 50px; 
+            border-radius: var(--border-radius); 
+            box-shadow: var(--shadow-light); 
+            background-color: var(--white);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        .service-block:hover::before {
+            transform: scaleX(1);
+        }
+        .service-block:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+        .service-block:nth-child(even) { 
+            flex-direction: row-reverse; 
+            background: linear-gradient(135deg, var(--light-grey) 0%, #f0f8f5 100%);
+        }
+        .service-icon-box { 
+            flex-shrink: 0; 
+            width: 120px; 
+            height: 120px; 
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+        .service-block:hover .service-icon-box {
+            transform: scale(1.1) rotate(5deg);
+        }
+        .service-icon-box i { font-size: 2.8em; color: var(--white); }
+        .service-content { flex-grow: 1; text-align: left; }
+        .service-content h4 { 
+            margin-bottom: 15px; 
+            color: var(--accent-dark);
+            position: relative;
+            display: inline-block;
+        }
+        .service-content h4::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.4s ease;
+        }
+        .service-block:hover .service-content h4::after {
+            width: 100px;
+        }
+        .service-content p { 
+            color: var(--dark-grey); 
+            margin-bottom: 20px; 
+            font-size: 1.1em;
+            line-height: 1.7;
+        }
+        .service-features { margin: 25px 0; }
+        .service-features li { 
+            margin-bottom: 12px; 
+            color: var(--black); 
+            font-weight: 500;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .service-features li i { 
+            color: var(--accent); 
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .tech-tag {
+            background: var(--light-grey);
+            color: var(--accent-dark);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            border: 1px solid rgba(0, 163, 108, 0.2);
+            transition: all 0.3s ease;
+        }
+        .tech-tag:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* PROCESSUS */
+        .process-section { background: var(--light-grey); padding: 80px 0; }
+        .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 50px; }
+        .process-step { 
+            background: var(--white); 
+            padding: 40px 30px; 
+            border-radius: var(--border-radius); 
+            text-align: center;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-pro);
+        }
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2em;
+        }
+        .process-step i { 
+            font-size: 2.5em; 
+            color: var(--accent); 
+            margin-bottom: 20px;
+        }
+        .process-step h4 { margin-bottom: 15px; color: var(--black); }
+
+        /* CTA */
+        .section-cta { 
+            text-align: center; 
+            padding: 80px 0; 
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); 
+            color: var(--white); 
+            position: relative;
+        }
+        .section-cta h3 { margin-bottom: 15px; }
+        .section-cta p { font-size: 1.3em; margin-bottom: 30px; opacity: 0.9; }
+
+        /* FOOTER */
         footer { background-color: var(--black); color: var(--light-grey); padding: 60px 0 20px; text-align: left; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 2fr; gap: 50px; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--dark-grey); }
         .footer-info h4 { color: var(--accent); margin-bottom: 10px; font-size: 1.5em; }
         .footer-contact i { margin-right: 10px; color: var(--accent); }
         .footer-contact p { line-height: 2; }
         .copyright { text-align: center; font-size: 0.85em; color: var(--dark-grey); }
-        
+        .social-links { display: flex; gap: 15px; margin-top: 15px; }
+        .social-links a { 
+            color: var(--light-grey); 
+            font-size: 1.2em; 
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+        }
+        .social-links a:hover { 
+            color: var(--accent); 
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        /* RESPONSIVE */
         @media (max-width: 992px) {
-            .service-block, .service-block:nth-child(even) { flex-direction: column; text-align: center; }
-            .service-icon-box { margin-bottom: 20px; }
-            .service-content ul { text-align: left; }
+            .service-block, .service-block:nth-child(even) { flex-direction: column; text-align: center; gap: 30px; }
+            .service-icon-box { margin-bottom: 0; }
+            .service-content { text-align: center; }
+            .service-features { text-align: left; }
             .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .process-steps { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
             nav .container { flex-direction: column; gap: 15px; }
+            nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .service-block { padding: 30px 20px; margin-bottom: 50px; }
+            .page-header { padding: 60px 0; }
         }
     </style>
 </head>
@@ -85,15 +322,15 @@
 
     <header class="page-header">
         <div class="container">
-            <h2>Architecture et Développement Sur Mesure 🏗️</h2>
-            <p>J'offre une gamme complète de services pour concrétiser vos idées numériques, du concept au déploiement.</p>
+            <h2 class="fade-in-up">Architecture et Développement Sur Mesure 🏗️</h2>
+            <p class="fade-in-up">J'offre une gamme complète de services pour concrétiser vos idées numériques, du concept au déploiement.</p>
         </div>
     </header>
 
     <section class="section-padded">
-        <div class="container">
+        <div class="services-container">
             
-            <div class="service-block">
+            <div class="service-block fade-in-left">
                 <div class="service-icon-box">
                     <i class="fas fa-desktop"></i>
                 </div>
@@ -102,15 +339,22 @@
                     <p>
                         Création d'interfaces utilisateur rapides, accessibles et compatibles avec tous les appareils. J'utilise les frameworks modernes pour garantir une expérience utilisateur fluide et sans faille.
                     </p>
-                    <ul>
-                        <li><i class="fas fa-code"></i> **Frameworks :** ReactJS, Vue.js, Angular.</li>
-                        <li><i class="fas fa-tachometer-alt"></i> **Performance :** Optimisation du temps de chargement et des métriques Core Web Vitals.</li>
-                        <li><i class="fas fa-mobile-alt"></i> **Design :** Intégration pixel-perfect du design UI/UX et responsive.</li>
+                    <ul class="service-features">
+                        <li><i class="fas fa-code"></i> <strong>Frameworks :</strong> ReactJS, Vue.js, Angular - Applications web modernes et réactives</li>
+                        <li><i class="fas fa-tachometer-alt"></i> <strong>Performance :</strong> Optimisation du temps de chargement et des métriques Core Web Vitals</li>
+                        <li><i class="fas fa-mobile-alt"></i> <strong>Design :</strong> Intégration pixel-perfect du design UI/UX et responsive cross-device</li>
                     </ul>
+                    <div class="tech-stack">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">SASS</span>
+                        <span class="tech-tag">Webpack</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="service-block">
+            <div class="service-block fade-in-right">
                 <div class="service-icon-box">
                     <i class="fas fa-cogs"></i>
                 </div>
@@ -119,15 +363,22 @@
                     <p>
                         Conception de la structure serveur, développement d'APIs RESTful ou GraphQL, et implémentation d'une logique métier fiable pour supporter les fonctionnalités de votre application.
                     </p>
-                    <ul>
-                        <li><i class="fas fa-server"></i> **Technologies :** Node.js (Express), Python (Django/Flask), PHP (Laravel).</li>
-                        <li><i class="fas fa-lock"></i> **Sécurité :** Mise en place des meilleures pratiques de sécurité (authentification, protection contre les injections).</li>
-                        <li><i class="fas fa-database"></i> **Base de Données :** Gestion des données relationnelles et NoSQL.</li>
+                    <ul class="service-features">
+                        <li><i class="fas fa-server"></i> <strong>Technologies :</strong> Node.js (Express), Python (Django/Flask), PHP (Laravel) - Backend robuste et scalable</li>
+                        <li><i class="fas fa-lock"></i> <strong>Sécurité :</strong> Mise en place des meilleures pratiques de sécurité (JWT, OAuth, protection injections)</li>
+                        <li><i class="fas fa-database"></i> <strong>Base de Données :</strong> Gestion des données relationnelles et NoSQL avec optimisation des performances</li>
                     </ul>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Redis</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="service-block">
+            <div class="service-block fade-in-left">
                 <div class="service-icon-box">
                     <i class="fas fa-cloud-upload-alt"></i>
                 </div>
@@ -136,22 +387,65 @@
                     <p>
                         Assurer que votre application soit disponible, stable et évolutive. Je gère la configuration des serveurs, l'intégration continue (CI/CD) et la surveillance.
                     </p>
-                    <ul>
-                        <li><i class="fab fa-aws"></i> **Cloud :** Déploiement sur AWS, Azure ou Google Cloud Platform.</li>
-                        <li><i class="fas fa-wrench"></i> **Conteneurisation :** Utilisation de Docker pour un environnement cohérent.</li>
-                        <li><i class="fas fa-sync-alt"></i> **CI/CD :** Automatisation du déploiement via GitHub Actions ou GitLab CI.</li>
+                    <ul class="service-features">
+                        <li><i class="fab fa-aws"></i> <strong>Cloud :</strong> Déploiement sur AWS, Azure ou Google Cloud Platform avec architecture scalable</li>
+                        <li><i class="fas fa-wrench"></i> <strong>Conteneurisation :</strong> Utilisation de Docker pour un environnement cohérent du dev à la prod</li>
+                        <li><i class="fas fa-sync-alt"></i> <strong>CI/CD :</strong> Automatisation du déploiement via GitHub Actions, GitLab CI ou Jenkins</li>
                     </ul>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">GitHub Actions</span>
+                        <span class="tech-tag">Nginx</span>
+                        <span class="tech-tag">Linux</span>
+                    </div>
                 </div>
             </div>
 
         </div>
     </section>
 
+    <!-- SECTION PROCESSUS -->
+    <section class="process-section section-padded">
+        <div class="container">
+            <span class="section-pretitle fade-in-up" style="display: block; text-align: center; font-size: 0.9em; font-weight: 700; color: var(--accent-dark); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px;">Méthodologie</span>
+            <h3 style="text-align: center; margin-bottom: 20px;" class="fade-in-up">Processus de Développement Structuré</h3>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto 50px; color: var(--dark-grey);" class="fade-in-up">Une approche méthodique pour garantir la réussite de votre projet à chaque étape</p>
+            
+            <div class="process-steps">
+                <div class="process-step fade-in-up">
+                    <div class="step-number">1</div>
+                    <i class="fas fa-lightbulb"></i>
+                    <h4>Analyse & Conception</h4>
+                    <p>Étude approfondie de vos besoins et conception de l'architecture technique</p>
+                </div>
+                <div class="process-step fade-in-up">
+                    <div class="step-number">2</div>
+                    <i class="fas fa-code"></i>
+                    <h4>Développement Agile</h4>
+                    <p>Implémentation itérative avec revues de code et tests continus</p>
+                </div>
+                <div class="process-step fade-in-up">
+                    <div class="step-number">3</div>
+                    <i class="fas fa-vial"></i>
+                    <h4>Tests & Validation</h4>
+                    <p>Tests rigoureux et validation des fonctionnalités avec le client</p>
+                </div>
+                <div class="process-step fade-in-up">
+                    <div class="step-number">4</div>
+                    <i class="fas fa-rocket"></i>
+                    <h4>Déploiement & Support</h4>
+                    <p>Mise en production et support technique post-livraison</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="cta-final" class="section-cta">
         <div class="container">
-            <h3>Prêt à Passer du Concept à la Réalité ?</h3>
-            <p>Transformons votre idée en une application Full Stack de classe mondiale. Contactez-moi pour une analyse gratuite de votre projet.</p>
-            <a href="#contact" class="btn dark-btn large-btn"><i class="fas fa-paper-plane"></i> Démarrer mon Projet</a>
+            <h3 class="fade-in-up">Prêt à Passer du Concept à la Réalité ?</h3>
+            <p class="fade-in-up">Transformons votre idée en une application Full Stack de classe mondiale. Contactez-moi pour une analyse gratuite de votre projet.</p>
+            <a href="#contact" class="btn dark-btn large-btn fade-in-up"><i class="fas fa-paper-plane"></i> Démarrer mon Projet</a>
         </div>
     </section>
 
@@ -161,18 +455,18 @@
                 <div class="footer-info">
                     <h4>Gabby Umba <span class="accent-dot">.</span></h4>
                     <p>Code Robuste. Performance Inégalée.</p>
-                    <div class="social-links" style="margin-top: 15px; display: flex; gap: 15px;">
-                        <a href="[VOTRE_LIEN_LINKEDIN]" style="color: var(--light-grey); font-size: 1.2em;"><i class="fab fa-linkedin"></i></a>
-                        <a href="[VOTRE_LIEN_GITHUB]" style="color: var(--light-grey); font-size: 1.2em;"><i class="fab fa-github"></i></a>
-                        <a href="[VOTRE_LIEN_TWITTER]" style="color: var(--light-grey); font-size: 1.2em;"><i class="fab fa-twitter"></i></a>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/gabby-umba-30a1a2265" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.facebook.com/gabby.umba.2025" target="_blank"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
                     <h5>Navigation</h5>
-                    <ul>
-                        <li><a href="index.html">Accueil</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
+                    <ul style="list-style: none;">
+                        <li><a href="index.html" style="color: var(--light-grey);">Accueil</a></li>
+                        <li><a href="#" style="color: var(--light-grey);">Services</a></li>
+                        <li><a href="portfolio.html" style="color: var(--light-grey);">Portfolio</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
@@ -183,7 +477,7 @@
                     </p>
                     <p>
                         <i class="fas fa-phone"></i> 
-                        <a href="tel:+XXNXXXXXXXXXX" style="color: var(--light-grey);">+XX XXX XX XX XX</a>
+                        <a href="tel:+243997227819" style="color: var(--light-grey);">+243 99 72 27 819</a>
                     </p>
                     <p style="margin-top: 10px;"><i class="fas fa-map-marker-alt"></i> Basé à Kolwezi (RDC)</p>
                 </div>
@@ -194,5 +488,40 @@
         </div>
     </footer>
 
+    <script>
+        // Animation au défilement
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observer tous les éléments avec des classes d'animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+
+        // Animation smooth scroll pour les ancres
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
