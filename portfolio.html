@@ -5,18 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Gabby Umba - Projets Full Stack</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
     
     <style>
-        /* CSS DU PORTFOLIO */
-        :root { --white: #FFFFFF; --black: #1A1A1A; --accent: #00A36C; --accent-dark: #007C53; --light-grey: #F5F5F5; --dark-grey: #4A4A4A; --font-heading: 'Helvetica Neue', Arial, sans-serif; --font-body: 'Arial', sans-serif; --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.05); --shadow-pro: 0 10px 30px rgba(0, 0, 0, 0.1); --transition: 0.3s ease-in-out; --border-radius: 8px; }
+        /* CSS DU PORTFOLIO AMÉLIORÉ */
+        :root { 
+            --white: #FFFFFF; 
+            --black: #1A1A1A; 
+            --accent: #00A36C; 
+            --accent-dark: #007C53; 
+            --light-grey: #F5F5F5; 
+            --dark-grey: #4A4A4A; 
+            --font-heading: 'Helvetica Neue', Arial, sans-serif; 
+            --font-body: 'Arial', sans-serif; 
+            --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.05); 
+            --shadow-pro: 0 10px 30px rgba(0, 0, 0, 0.1); 
+            --transition: 0.3s ease-in-out; 
+            --border-radius: 12px;
+        }
+        
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: var(--font-body); color: var(--black); background-color: var(--white); line-height: 1.6; }
+        body { font-family: var(--font-body); color: var(--black); background-color: var(--white); line-height: 1.6; overflow-x: hidden; }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
         h1, h2, h3 { font-family: var(--font-heading); font-weight: 700; line-height: 1.2; }
         a { color: var(--accent); text-decoration: none; transition: color var(--transition); }
         a:hover { color: var(--accent-dark); }
         .section-padded { padding: 80px 0; }
-        nav { background-color: var(--white); padding: 20px 0; box-shadow: var(--shadow-light); position: sticky; top: 0; z-index: 100; }
+        
+        /* ANIMATIONS SCROLL */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* NAVIGATION */
+        nav { background-color: var(--white); padding: 20px 0; box-shadow: var(--shadow-light); position: sticky; top: 0; z-index: 1000; }
         nav .container { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.8em; font-weight: 900; color: var(--black); }
         .accent-dot { color: var(--accent); }
@@ -24,38 +70,166 @@
         nav a { font-weight: 600; font-size: 1.05em; padding: 5px 0; position: relative; color: var(--dark-grey); }
         nav a:after { content: ''; position: absolute; width: 0; height: 3px; bottom: -5px; left: 0; background-color: var(--accent); transition: width var(--transition); }
         nav a:hover:after, nav a.active:after { width: 100%; }
+        
+        /* BOUTONS */
         .btn { padding: 12px 25px; border-radius: var(--border-radius); font-weight: 600; display: inline-block; transition: all var(--transition); border: 2px solid transparent; cursor: pointer; text-align: center; }
         .primary-btn { background-color: var(--accent); color: var(--white); }
-        .primary-btn:hover { background-color: var(--accent-dark); transform: translateY(-2px); }
+        .primary-btn:hover { background-color: var(--accent-dark); transform: translateY(-3px); box-shadow: var(--shadow-pro); }
+        .secondary-btn { background-color: transparent; border-color: var(--dark-grey); color: var(--dark-grey); }
+        .secondary-btn:hover { background-color: var(--dark-grey); color: var(--white); transform: translateY(-3px); }
         .small-btn { padding: 8px 18px; font-size: 0.9em; }
         .btn i { margin-right: 5px; }
-        .page-header { background-color: var(--light-grey); padding: 80px 0; text-align: center; margin-bottom: 50px; }
-        .page-header h2 { font-weight: 900; margin-bottom: 10px; }
-        .page-header p { font-size: 1.2em; color: var(--dark-grey); }
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; padding-bottom: 80px; }
-        .project-card { background: var(--white); border-radius: var(--border-radius); box-shadow: var(--shadow-pro); overflow: hidden; transition: transform var(--transition); }
-        .project-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); }
-        .project-card img { width: 100%; height: 250px; object-fit: cover; transition: filter 0.5s; }
-        .project-info { padding: 25px; text-align: left; }
-        .project-info h4 { font-size: 1.6em; margin-bottom: 8px; color: var(--black); font-weight: 800; }
-        .project-tags { font-size: 0.9em; color: var(--accent-dark); font-weight: 600; margin-bottom: 15px; }
-        .project-description { color: var(--dark-grey); margin-bottom: 20px; }
-        .case-study-link { font-weight: 600; display: flex; align-items: center; }
-        .case-study-link i { margin-left: 5px; font-size: 0.8em; }
+
+        /* HEADER */
+        .page-header { background: linear-gradient(135deg, var(--light-grey) 0%, #e8f4f1 100%); padding: 100px 0; text-align: center; margin-bottom: 50px; position: relative; overflow: hidden; }
+        .page-header h2 { font-weight: 900; margin-bottom: 15px; font-size: clamp(2.5em, 5vw, 3.5em); }
+        .page-header p { font-size: 1.3em; color: var(--dark-grey); max-width: 600px; margin: 0 auto; }
+
+        /* GRID PORTFOLIO AMÉLIORÉE */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 40px; padding-bottom: 80px; }
+        .project-card { background: var(--white); border-radius: var(--border-radius); box-shadow: var(--shadow-light); overflow: hidden; transition: all 0.4s ease; position: relative; }
+        .project-card:hover { transform: translateY(-12px); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15); }
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+        .project-image { position: relative; overflow: hidden; height: 250px; }
+        .project-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .project-card:hover img { transform: scale(1.05); }
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 163, 108, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+        .project-link {
+            background: var(--white);
+            color: var(--accent);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .project-link:hover {
+            background: var(--black);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+        .project-info { padding: 30px; text-align: left; }
+        .project-info h4 { font-size: 1.6em; margin-bottom: 10px; color: var(--black); font-weight: 800; }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; }
+        .project-tag {
+            background: var(--light-grey);
+            color: var(--accent-dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+        .project-description { color: var(--dark-grey); margin-bottom: 20px; line-height: 1.7; }
+        .case-study-link { font-weight: 600; display: inline-flex; align-items: center; color: var(--accent); }
+        .case-study-link i { margin-left: 8px; font-size: 0.8em; transition: transform 0.3s ease; }
+        .case-study-link:hover i { transform: translateX(5px); }
+
+        /* CAROUSEL TÉMOIGNAGES */
+        .testimonials-section { background: var(--light-grey); padding: 80px 0; }
+        .testimonials-slider { max-width: 800px; margin: 0 auto; }
+        .testimonial-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            text-align: center;
+            margin: 20px;
+        }
+        .testimonial-text {
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--dark-grey);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--black);
+        }
+        .testimonial-role {
+            color: var(--accent);
+            font-size: 0.9em;
+        }
+
+        /* STATISTIQUES */
+        .stats-section { padding: 60px 0; background: var(--white); }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center; }
+        .stat-item { padding: 30px; }
+        .stat-number { font-size: 3em; font-weight: 900; color: var(--accent); margin-bottom: 10px; }
+        .stat-label { color: var(--dark-grey); font-weight: 600; }
+
+        /* FOOTER */
         footer { background-color: var(--black); color: var(--light-grey); padding: 60px 0 20px; text-align: left; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 2fr; gap: 50px; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--dark-grey); }
         .footer-info h4 { color: var(--accent); margin-bottom: 10px; font-size: 1.5em; }
         .footer-contact i { margin-right: 10px; color: var(--accent); }
         .footer-contact p { line-height: 2; }
         .copyright { text-align: center; font-size: 0.85em; color: var(--dark-grey); }
+        .social-links { display: flex; gap: 15px; margin-top: 15px; }
+        .social-links a { 
+            color: var(--light-grey); 
+            font-size: 1.2em; 
+            transition: all 0.3s ease; 
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+        }
+        .social-links a:hover { 
+            color: var(--accent); 
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
 
+        /* RESPONSIVE */
         @media (max-width: 992px) {
             .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 768px) {
             nav .container { flex-direction: column; gap: 15px; }
-            .portfolio-grid { grid-template-columns: 1fr; }
-            .page-header { padding: 50px 0; }
+            nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .page-header { padding: 60px 0; }
+            .project-info { padding: 20px; }
+            .stats-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -77,44 +251,119 @@
 
     <header class="page-header">
         <div class="container">
-            <h2>Démonstration de Compétences Techniques 🚀</h2>
-            <p>Chaque projet est une étude de cas en ingénierie logicielle, de la base de données à l'interface utilisateur.</p>
+            <h2 class="fade-in-up">Démonstration de Compétences Techniques 🚀</h2>
+            <p class="fade-in-up">Chaque projet est une étude de cas en ingénierie logicielle, de la base de données à l'interface utilisateur.</p>
         </div>
     </header>
 
     <section class="section-padded">
         <div class="container portfolio-grid">
 
-            <div class="project-card">
-                <img src="project_saas_dashboard.jpg" alt="Capture d'écran de la plateforme d'analyse" loading="lazy">
+            <div class="project-card fade-in-up">
+                <div class="project-image">
+                    <img src="alarechercheprojet1.heic" alt="Plateforme d'analyse logistique en temps réel" loading="lazy">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="#" class="project-link" title="Voir la démo">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="#" class="project-link" title="Code source">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <div class="project-info">
                     <h4>Plateforme d'Analyse Logistique</h4>
-                    <p class="project-tags">Node.js | React | PostgreSQL | AWS</p>
-                    <p class="project-description">Conception et développement Full Stack d'un tableau de bord pour l'optimisation des flux logistiques en temps réel. Mise à l'échelle pour 1000+ utilisateurs.</p>
-                    <a href="[LIEN_VERS_ETUDE_DE_CAS]" class="case-study-link">Voir l'Étude Technique <i class="fas fa-long-arrow-alt-right"></i></a>
+                    <div class="project-tags">
+                        <span class="project-tag">Node.js</span>
+                        <span class="project-tag">React</span>
+                        <span class="project-tag">PostgreSQL</span>
+                        <span class="project-tag">AWS</span>
+                    </div>
+                    <p class="project-description">Conception et développement Full Stack d'un tableau de bord pour l'optimisation des flux logistiques en temps réel. Mise à l'échelle pour 1000+ utilisateurs avec monitoring avancé.</p>
+                    <a href="#" class="case-study-link">Voir l'Étude Technique <i class="fas fa-long-arrow-alt-right"></i></a>
                 </div>
             </div>
 
-            <div class="project-card">
-                <img src="project_mobile_app.jpg" alt="Mockup d'une application de gestion mobile" loading="lazy">
+            <div class="project-card fade-in-up">
+                <div class="project-image">
+                    <img src="alarechercheprojet2.heic" alt="Application mobile de gestion des ressources" loading="lazy">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="#" class="project-link" title="Voir la démo">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="#" class="project-link" title="Code source">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <div class="project-info">
                     <h4>Application de Gestion des Ressources</h4>
-                    <p class="project-tags">React Native | Express.js | MongoDB</p>
-                    <p class="project-description">Développement d'une application mobile hybride (iOS/Android) pour la gestion d'inventaire sur site, avec synchronisation hors ligne.</p>
-                    <a href="[LIEN_VERS_ETUDE_DE_CAS]" class="case-study-link">Voir l'Étude Technique <i class="fas fa-long-arrow-alt-right"></i></a>
+                    <div class="project-tags">
+                        <span class="project-tag">React Native</span>
+                        <span class="project-tag">Express.js</span>
+                        <span class="project-tag">MongoDB</span>
+                        <span class="project-tag">Socket.io</span>
+                    </div>
+                    <p class="project-description">Développement d'une application mobile hybride (iOS/Android) pour la gestion d'inventaire sur site, avec synchronisation hors ligne et notifications en temps réel.</p>
+                    <a href="#" class="case-study-link">Voir l'Étude Technique <i class="fas fa-long-arrow-alt-right"></i></a>
                 </div>
             </div>
 
-            <div class="project-card">
-                <img src="project_performant_site.jpg" alt="Capture d'écran d'un site vitrine haute performance" loading="lazy">
+            <div class="project-card fade-in-up">
+                <div class="project-image">
+                    <img src="seancetravail1.heic" alt="Site e-commerce haute performance" loading="lazy">
+                    <div class="project-overlay">
+                        <div class="project-links">
+                            <a href="#" class="project-link" title="Voir la démo">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="#" class="project-link" title="Code source">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <div class="project-info">
-                    <h4>Site Vitrine Haute Performance (e-commerce)</h4>
-                    <p class="project-tags">Vue.js | Nuxt.js | Strapi CMS | Vercel</p>
-                    <p class="project-description">Migration d'un site e-commerce vers une architecture Jamstack pour une vitesse de chargement et un SEO exceptionnels.</p>
-                    <a href="[LIEN_VERS_ETUDE_DE_CAS]" class="case-study-link">Voir l'Étude Technique <i class="fas fa-long-arrow-alt-right"></i></a>
+                    <h4>Site E-commerce Haute Performance</h4>
+                    <div class="project-tags">
+                        <span class="project-tag">Vue.js</span>
+                        <span class="project-tag">Nuxt.js</span>
+                        <span class="project-tag">Strapi CMS</span>
+                        <span class="project-tag">Vercel</span>
+                    </div>
+                    <p class="project-description">Migration d'un site e-commerce vers une architecture Jamstack pour une vitesse de chargement et un SEO exceptionnels. Réduction du temps de chargement de 70%.</p>
+                    <a href="#" class="case-study-link">Voir l'Étude Technique <i class="fas fa-long-arrow-alt-right"></i></a>
                 </div>
             </div>
-            
+
+        </div>
+    </section>
+
+    <!-- SECTION STATISTIQUES -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item fade-in-up">
+                    <div class="stat-number" data-count="25">0</div>
+                    <div class="stat-label">Projets Livrés</div>
+                </div>
+                <div class="stat-item fade-in-up">
+                    <div class="stat-number" data-count="98">0</div>
+                    <div class="stat-label">Satisfaction Client</div>
+                </div>
+                <div class="stat-item fade-in-up">
+                    <div class="stat-number" data-count="3">0</div>
+                    <div class="stat-label">Ans d'Expérience</div>
+                </div>
+                <div class="stat-item fade-in-up">
+                    <div class="stat-number" data-count="15">0</div>
+                    <div class="stat-label">Technologies Maîtrisées</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -124,18 +373,18 @@
                 <div class="footer-info">
                     <h4>Gabby Umba <span class="accent-dot">.</span></h4>
                     <p>Code Robuste. Performance Inégalée.</p>
-                    <div class="social-links" style="margin-top: 15px; display: flex; gap: 15px;">
-                        <a href="[VOTRE_LIEN_LINKEDIN]" style="color: var(--light-grey); font-size: 1.2em;"><i class="fab fa-linkedin"></i></a>
-                        <a href="[VOTRE_LIEN_GITHUB]" style="color: var(--light-grey); font-size: 1.2em;"><i class="fab fa-github"></i></a>
-                        <a href="[VOTRE_LIEN_TWITTER]" style="color: var(--light-grey); font-size: 1.2em;"><i class="fab fa-twitter"></i></a>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/gabby-umba-30a1a2265" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.facebook.com/gabby.umba.2025" target="_blank"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
                     <h5>Navigation</h5>
-                    <ul>
-                        <li><a href="index.html">Accueil</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="#">Portfolio</a></li>
+                    <ul style="list-style: none;">
+                        <li><a href="index.html" style="color: var(--light-grey);">Accueil</a></li>
+                        <li><a href="services.html" style="color: var(--light-grey);">Services</a></li>
+                        <li><a href="#" style="color: var(--light-grey);">Portfolio</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
@@ -146,7 +395,7 @@
                     </p>
                     <p>
                         <i class="fas fa-phone"></i> 
-                        <a href="tel:+XXNXXXXXXXXXX" style="color: var(--light-grey);">+XX XXX XX XX XX</a>
+                        <a href="tel:+243997227819" style="color: var(--light-grey);">+243 99 72 27 819</a>
                     </p>
                     <p style="margin-top: 10px;"><i class="fas fa-map-marker-alt"></i> Basé à Kolwezi (RDC)</p>
                 </div>
@@ -157,5 +406,63 @@
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+    <script>
+        // Animation au défilement
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animation des statistiques
+                    if (entry.target.classList.contains('stat-number')) {
+                        animateCounter(entry.target);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observer tous les éléments avec des classes d'animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .stat-number');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+
+        // Animation des compteurs
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-count'));
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    clearInterval(timer);
+                    current = target;
+                }
+                element.textContent = Math.floor(current) + (element.getAttribute('data-count') === '98' ? '%' : '+');
+            }, 16);
+        }
+
+        // Animation smooth scroll pour les ancres
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
