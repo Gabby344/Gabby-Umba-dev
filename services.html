@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services | Gabby Umba - Développement Web Sur Mesure</title>
+    <meta name="description" content="Services de développement Full Stack sur mesure. Création d'applications web performantes, APIs robustes et solutions cloud évolutives.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
     
@@ -11,40 +12,67 @@
         /* CSS DU SERVICES ULTRA-PROFESSIONNEL */
         :root { 
             --white: #FFFFFF; 
-            --black: #1A1A1A; 
-            --accent: #00A36C; 
-            --accent-dark: #007C53; 
-            --accent-light: #e8f6f0;
-            --light-grey: #F5F5F5; 
-            --dark-grey: #4A4A4A; 
-            --font-heading: 'Helvetica Neue', Arial, sans-serif; 
-            --font-body: 'Arial', sans-serif; 
-            --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.05); 
-            --shadow-pro: 0 10px 30px rgba(0, 0, 0, 0.1); 
-            --shadow-heavy: 0 20px 50px rgba(0, 0, 0, 0.15);
-            --transition: 0.3s ease-in-out; 
-            --transition-slow: 0.6s ease-in-out;
-            --border-radius: 12px;
-            --border-radius-lg: 20px;
+            --black: #0A0A0A; 
+            --accent: #00D4AA; 
+            --accent-dark: #00B894; 
+            --accent-light: #E8F9F5;
+            --light-grey: #F8F9FA; 
+            --dark-grey: #4A5568; 
+            --gradient-primary: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            --gradient-secondary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-dark: linear-gradient(135deg, var(--black) 0%, #2D3748 100%);
+            --font-heading: 'Inter', 'Helvetica Neue', Arial, sans-serif; 
+            --font-body: 'Inter', 'Arial', sans-serif; 
+            --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.08); 
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12); 
+            --shadow-heavy: 0 20px 60px rgba(0, 0, 0, 0.15);
+            --shadow-glow: 0 0 30px rgba(0, 212, 170, 0.3);
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+            --transition-slow: 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body { 
             font-family: var(--font-body); 
             color: var(--black); 
             background-color: var(--white); 
-            line-height: 1.6; 
+            line-height: 1.7; 
             overflow-x: hidden;
-            scroll-behavior: smooth;
+            position: relative;
         }
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
-        h1, h2, h3 { font-family: var(--font-heading); font-weight: 700; line-height: 1.2; }
-        h2 { font-size: clamp(2.5em, 5vw, 3.5em); }
-        h3 { font-size: clamp(1.8em, 4vw, 2.5em); }
-        h4 { font-size: 1.6em; font-weight: 800; }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(0, 212, 170, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 180, 148, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 20%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .container { max-width: 1320px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3 { font-family: var(--font-heading); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+        h2 { font-size: clamp(2.8em, 5vw, 4em); }
+        h3 { font-size: clamp(2em, 4vw, 3em); }
+        h4 { font-size: 1.8em; font-weight: 800; letter-spacing: -0.01em; }
         a { color: var(--accent); text-decoration: none; transition: all var(--transition); }
         a:hover { color: var(--accent-dark); }
-        .section-padded { padding: 100px 0; }
+        .section-padded { padding: 120px 0; position: relative; }
         
         /* ANIMATIONS SCROLL AVANCÉES */
         .fade-in-up {
@@ -86,18 +114,22 @@
 
         /* NAVIGATION AVANCÉE */
         nav { 
-            background-color: rgba(255, 255, 255, 0.95); 
+            background-color: rgba(255, 255, 255, 0.92); 
             padding: 20px 0; 
             box-shadow: var(--shadow-light); 
-            position: sticky; 
+            position: fixed; 
             top: 0; 
+            left: 0;
+            right: 0;
             z-index: 1000; 
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             transition: all var(--transition);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
         nav.scrolled {
             padding: 15px 0;
-            box-shadow: var(--shadow-pro);
+            box-shadow: var(--shadow-medium);
+            background-color: rgba(255, 255, 255, 0.98);
         }
         nav .container { display: flex; justify-content: space-between; align-items: center; }
         .logo { 
@@ -105,6 +137,8 @@
             font-weight: 900; 
             color: var(--black); 
             position: relative;
+            display: flex;
+            align-items: center;
         }
         .logo::after {
             content: '';
@@ -113,18 +147,18 @@
             left: 0;
             width: 0;
             height: 3px;
-            background: var(--accent);
+            background: var(--gradient-primary);
             transition: width var(--transition-slow);
         }
         .logo:hover::after {
             width: 100%;
         }
-        .accent-dot { color: var(--accent); }
+        .accent-dot { color: var(--accent); margin-left: 4px; }
         nav ul { list-style: none; display: flex; gap: 30px; }
         nav a { 
             font-weight: 600; 
             font-size: 1.05em; 
-            padding: 5px 0; 
+            padding: 8px 0; 
             position: relative; 
             color: var(--dark-grey); 
         }
@@ -133,27 +167,30 @@
             position: absolute; 
             width: 0; 
             height: 3px; 
-            bottom: -5px; 
+            bottom: 0; 
             left: 0; 
-            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            background: var(--gradient-primary);
             transition: width var(--transition); 
+            border-radius: 2px;
         }
         nav a:hover:after, nav a.active:after { width: 100%; }
 
         /* BOUTONS AVANCÉS */
         .btn { 
-            padding: 14px 28px; 
+            padding: 16px 32px; 
             border-radius: var(--border-radius); 
             font-weight: 600; 
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             transition: all var(--transition); 
             border: 2px solid transparent; 
             cursor: pointer; 
             text-align: center;
             position: relative;
             overflow: hidden;
+            font-size: 1em;
+            letter-spacing: 0.5px;
         }
         .btn::before {
             content: '';
@@ -162,19 +199,20 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.7s;
         }
         .btn:hover::before {
             left: 100%;
         }
         .primary-btn { 
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            background: var(--gradient-primary);
             color: var(--white); 
+            box-shadow: var(--shadow-light);
         }
         .primary-btn:hover { 
-            transform: translateY(-3px); 
-            box-shadow: var(--shadow-heavy);
+            transform: translateY(-5px); 
+            box-shadow: var(--shadow-glow);
         }
         .secondary-btn { 
             background-color: transparent; 
@@ -189,28 +227,29 @@
         .whatsapp-btn {
             background: linear-gradient(135deg, #25D366, #128C7E);
             color: var(--white);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
         }
         .whatsapp-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.4);
         }
         .dark-btn { 
-            background: linear-gradient(135deg, var(--black), #2a2a2a);
+            background: var(--gradient-dark);
             color: var(--white); 
             border-color: var(--black); 
         }
         .dark-btn:hover { 
             background: linear-gradient(135deg, #2a2a2a, var(--dark-grey));
-            transform: translateY(-3px); 
-            box-shadow: var(--shadow-pro); 
+            transform: translateY(-5px); 
+            box-shadow: var(--shadow-medium); 
         }
-        .small-btn { padding: 10px 22px; font-size: 0.9em; }
-        .large-btn { padding: 16px 42px; font-size: 1.1em; }
+        .small-btn { padding: 12px 24px; font-size: 0.9em; }
+        .large-btn { padding: 18px 42px; font-size: 1.1em; }
 
         /* HEADER AVANCÉ */
         .page-header { 
             background: linear-gradient(135deg, var(--light-grey) 0%, var(--accent-light) 100%); 
-            padding: 120px 0 100px; 
+            padding: 180px 0 120px; 
             text-align: center; 
             margin-bottom: 50px; 
             position: relative;
@@ -223,13 +262,15 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(0,163,108,0.03)" points="0,1000 1000,0 1000,1000"/></svg>');
-            background-size: cover;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 212, 170, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 180, 148, 0.1) 0%, transparent 50%);
+            z-index: 1;
         }
         .page-header h2 { 
             font-weight: 900; 
             margin-bottom: 20px; 
-            font-size: clamp(2.5em, 5vw, 3.5em);
+            font-size: clamp(2.8em, 5vw, 4em);
             position: relative;
             z-index: 2;
         }
@@ -240,6 +281,7 @@
             margin: 0 auto;
             position: relative;
             z-index: 2;
+            line-height: 1.7;
         }
 
         /* SERVICES ULTRA-AMÉLIORÉS */
@@ -249,7 +291,7 @@
             align-items: center; 
             gap: 80px; 
             margin-bottom: 100px; 
-            padding: 60px; 
+            padding: 70px 60px; 
             border-radius: var(--border-radius-lg); 
             box-shadow: var(--shadow-light); 
             background: var(--white);
@@ -265,7 +307,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            background: var(--gradient-primary);
             transform: scaleX(0);
             transition: transform var(--transition-slow);
             z-index: 2;
@@ -283,15 +325,15 @@
         }
         .service-icon-box { 
             flex-shrink: 0; 
-            width: 140px; 
-            height: 140px; 
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            width: 160px; 
+            height: 160px; 
+            background: var(--gradient-primary);
             border-radius: 50%; 
             display: flex; 
             align-items: center; 
             justify-content: center;
             transition: all var(--transition-slow);
-            box-shadow: var(--shadow-pro);
+            box-shadow: var(--shadow-medium);
             position: relative;
             overflow: hidden;
         }
@@ -313,7 +355,7 @@
             opacity: 1;
         }
         .service-icon-box i { 
-            font-size: 3.2em; 
+            font-size: 3.5em; 
             color: var(--white);
             transition: transform var(--transition);
         }
@@ -326,7 +368,7 @@
             color: var(--accent-dark);
             position: relative;
             display: inline-block;
-            font-size: 1.8em;
+            font-size: 2em;
         }
         .service-content h4::after {
             content: '';
@@ -335,7 +377,7 @@
             left: 0;
             width: 60px;
             height: 4px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            background: var(--gradient-primary);
             transition: width 0.4s ease;
             border-radius: 2px;
         }
@@ -356,7 +398,7 @@
             display: flex;
             align-items: flex-start;
             gap: 15px;
-            padding: 8px 0;
+            padding: 12px 0;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             transition: all var(--transition);
         }
@@ -373,8 +415,8 @@
             flex-shrink: 0;
             font-size: 1.1em;
             background: var(--accent-light);
-            padding: 8px;
-            border-radius: 8px;
+            padding: 10px;
+            border-radius: 10px;
             transition: all var(--transition);
         }
         .service-features li:hover i {
@@ -391,11 +433,11 @@
         .tech-tag {
             background: var(--light-grey);
             color: var(--accent-dark);
-            padding: 8px 18px;
+            padding: 10px 20px;
             border-radius: 25px;
             font-size: 0.9em;
             font-weight: 600;
-            border: 2px solid rgba(0, 163, 108, 0.2);
+            border: 2px solid rgba(0, 212, 170, 0.2);
             transition: all var(--transition);
             position: relative;
             overflow: hidden;
@@ -407,7 +449,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0,163,108,0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0,212,170,0.1), transparent);
             transition: left 0.5s;
         }
         .tech-tag:hover::before {
@@ -424,7 +466,7 @@
         /* PROCESSUS AVANCÉ */
         .process-section { 
             background: linear-gradient(135deg, var(--light-grey) 0%, var(--accent-light) 100%); 
-            padding: 100px 0; 
+            padding: 120px 0; 
             position: relative;
         }
         .process-section::before {
@@ -434,7 +476,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            background: var(--gradient-primary);
         }
         .process-steps { 
             display: grid; 
@@ -444,7 +486,7 @@
         }
         .process-step { 
             background: var(--white); 
-            padding: 50px 30px; 
+            padding: 60px 30px 40px; 
             border-radius: var(--border-radius-lg); 
             text-align: center;
             box-shadow: var(--shadow-light);
@@ -460,7 +502,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            background: var(--gradient-primary);
             transform: scaleX(0);
             transition: transform var(--transition);
         }
@@ -469,7 +511,7 @@
         }
         .process-step:hover {
             transform: translateY(-10px);
-            box-shadow: var(--shadow-pro);
+            box-shadow: var(--shadow-medium);
         }
         .step-number {
             position: absolute;
@@ -478,7 +520,7 @@
             transform: translateX(-50%);
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            background: var(--gradient-primary);
             color: var(--white);
             border-radius: 50%;
             display: flex;
@@ -486,21 +528,24 @@
             justify-content: center;
             font-weight: 900;
             font-size: 1.4em;
-            box-shadow: var(--shadow-pro);
+            box-shadow: var(--shadow-medium);
             border: 4px solid var(--white);
         }
         .process-step i { 
-            font-size: 3em; 
-            color: var(--accent); 
+            font-size: 3.2em; 
             margin-bottom: 25px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            transition: transform var(--transition);
+        }
+        .process-step:hover i {
+            transform: scale(1.1);
         }
         .process-step h4 { 
             margin-bottom: 20px; 
             color: var(--black);
-            font-size: 1.4em;
+            font-size: 1.5em;
         }
         .process-step p {
             color: var(--dark-grey);
@@ -510,8 +555,8 @@
         /* CTA AVANCÉ */
         .section-cta { 
             text-align: center; 
-            padding: 100px 0; 
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%); 
+            padding: 120px 0; 
+            background: var(--gradient-primary); 
             color: var(--white); 
             position: relative;
             overflow: hidden;
@@ -523,12 +568,14 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,1000 1000,0 1000,1000"/></svg>');
-            background-size: cover;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            z-index: 1;
         }
         .section-cta h3 { 
             margin-bottom: 20px; 
-            font-size: 2.5em;
+            font-size: 2.8em;
             position: relative;
             z-index: 2;
         }
@@ -541,6 +588,7 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.7;
         }
 
         /* BOUTON WHATSAPP FLOATING */
@@ -548,8 +596,8 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
             border-radius: 50%;
@@ -567,16 +615,16 @@
             box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
         }
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
         /* FOOTER AVANCÉ */
         footer { 
-            background: linear-gradient(135deg, var(--black), #2a2a2a);
+            background: var(--gradient-dark);
             color: var(--light-grey); 
-            padding: 80px 0 30px; 
+            padding: 100px 0 30px; 
             text-align: left; 
             position: relative;
         }
@@ -587,7 +635,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            background: var(--gradient-primary);
         }
         .footer-grid { 
             display: grid; 
@@ -607,7 +655,7 @@
             color: var(--accent); 
             width: 20px;
         }
-        .footer-contact p { line-height: 2.2; }
+        .footer-contact p { line-height: 2.2; margin-bottom: 10px; }
         .copyright { 
             text-align: center; 
             font-size: 0.9em; 
@@ -638,9 +686,109 @@
             transform: translateY(-3px) scale(1.1);
         }
 
+        /* SECTION PRESTATION */
+        .pricing-section {
+            padding: 120px 0;
+            background: var(--light-grey);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .pricing-card {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: var(--shadow-light);
+            transition: all var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform var(--transition);
+        }
+        
+        .pricing-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+        
+        .pricing-card.featured {
+            transform: scale(1.05);
+            border: 2px solid var(--accent);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .pricing-header {
+            margin-bottom: 30px;
+        }
+        
+        .pricing-name {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 10px;
+        }
+        
+        .pricing-price {
+            font-size: 3em;
+            font-weight: 900;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        
+        .pricing-period {
+            color: var(--dark-grey);
+            font-size: 0.9em;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features li i {
+            color: var(--accent);
+        }
+
         /* RESPONSIVE AVANCÉ */
         @media (max-width: 1200px) {
-            .service-block { gap: 60px; padding: 50px 40px; }
+            .service-block { gap: 60px; padding: 60px 50px; }
         }
         @media (max-width: 992px) {
             .service-block, .service-block:nth-child(even) { flex-direction: column; text-align: center; gap: 40px; }
@@ -650,29 +798,37 @@
             .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
             .process-steps { grid-template-columns: repeat(2, 1fr); }
             .service-content h4::after { left: 50%; transform: translateX(-50%); }
+            .pricing-card.featured { transform: scale(1); }
+            .pricing-card.featured:hover { transform: translateY(-10px); }
         }
         @media (max-width: 768px) {
             nav .container { flex-direction: column; gap: 15px; }
             nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
-            .service-block { padding: 40px 25px; margin-bottom: 70px; }
-            .page-header { padding: 80px 0 60px; }
+            .service-block { padding: 50px 30px; margin-bottom: 70px; }
+            .page-header { padding: 150px 0 80px; }
             .process-steps { grid-template-columns: 1fr; }
-            .section-padded { padding: 80px 0; }
+            .section-padded { padding: 100px 0; }
             .whatsapp-float {
                 bottom: 20px;
                 right: 20px;
-                width: 50px;
-                height: 50px;
+                width: 55px;
+                height: 55px;
                 font-size: 1.5em;
+            }
+            .pricing-grid {
+                grid-template-columns: 1fr;
             }
         }
         @media (max-width: 480px) {
-            .service-block { padding: 30px 20px; gap: 30px; }
-            .service-icon-box { width: 120px; height: 120px; }
-            .service-icon-box i { font-size: 2.8em; }
-            .page-header h2 { font-size: 2em; }
+            .service-block { padding: 40px 25px; gap: 30px; }
+            .service-icon-box { width: 140px; height: 140px; }
+            .service-icon-box i { font-size: 3em; }
+            .page-header h2 { font-size: 2.2em; }
             .page-header p { font-size: 1.1em; }
             .tech-stack { justify-content: center; }
+            .pricing-card {
+                padding: 40px 25px;
+            }
         }
     </style>
 </head>
@@ -703,7 +859,7 @@
     <header class="page-header">
         <div class="container">
             <h2 class="fade-in-up">Architecture et Développement Sur Mesure 🏗️</h2>
-            <p class="fade-in-up">J'offre une gamme complète de services pour concrétiser vos idées numériques, du concept au déploiement.</p>
+            <p class="fade-in-up">J'offre une gamme complète de services pour concrétiser vos idées numériques, du concept au déploiement en production.</p>
         </div>
     </header>
 
@@ -717,12 +873,13 @@
                 <div class="service-content">
                     <h4>Développement Front-end Avancé</h4>
                     <p>
-                        Création d'interfaces utilisateur rapides, accessibles et compatibles avec tous les appareils. J'utilise les frameworks modernes pour garantir une expérience utilisateur fluide et sans faille.
+                        Création d'interfaces utilisateur performantes, accessibles et compatibles avec tous les appareils. J'utilise les frameworks modernes pour garantir une expérience utilisateur fluide et sans faille, avec un focus sur les performances et l'accessibilité.
                     </p>
                     <ul class="service-features">
-                        <li><i class="fas fa-code"></i> <strong>Frameworks :</strong> ReactJS, Vue.js, Angular - Applications web modernes et réactives</li>
-                        <li><i class="fas fa-tachometer-alt"></i> <strong>Performance :</strong> Optimisation du temps de chargement et des métriques Core Web Vitals</li>
-                        <li><i class="fas fa-mobile-alt"></i> <strong>Design :</strong> Intégration pixel-perfect du design UI/UX et responsive cross-device</li>
+                        <li><i class="fas fa-code"></i> <strong>Frameworks Modernes :</strong> ReactJS, Vue.js, Angular - Applications web réactives et performantes</li>
+                        <li><i class="fas fa-tachometer-alt"></i> <strong>Optimisation Performance :</strong> Amélioration des Core Web Vitals et temps de chargement</li>
+                        <li><i class="fas fa-mobile-alt"></i> <strong>Design Responsive :</strong> Intégration pixel-perfect et expérience multi-devices</li>
+                        <li><i class="fas fa-bolt"></i> <strong>Progressive Web Apps :</strong> Applications web avec expérience native</li>
                     </ul>
                     <div class="tech-stack">
                         <span class="tech-tag">React</span>
@@ -731,6 +888,7 @@
                         <span class="tech-tag">SASS</span>
                         <span class="tech-tag">Webpack</span>
                         <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">PWA</span>
                     </div>
                 </div>
             </div>
@@ -740,14 +898,15 @@
                     <i class="fas fa-cogs"></i>
                 </div>
                 <div class="service-content">
-                    <h4>Logique Métier et APIs Sécurisées</h4>
+                    <h4>Architecture Back-end & APIs</h4>
                     <p>
-                        Conception de la structure serveur, développement d'APIs RESTful ou GraphQL, et implémentation d'une logique métier fiable pour supporter les fonctionnalités de votre application.
+                        Conception de la structure serveur, développement d'APIs RESTful ou GraphQL, et implémentation d'une logique métier fiable pour supporter les fonctionnalités de votre application. Architecture scalable et sécurisée.
                     </p>
                     <ul class="service-features">
-                        <li><i class="fas fa-server"></i> <strong>Technologies :</strong> Node.js (Express), Python (Django/Flask), PHP (Laravel) - Backend robuste et scalable</li>
-                        <li><i class="fas fa-lock"></i> <strong>Sécurité :</strong> Mise en place des meilleures pratiques de sécurité (JWT, OAuth, protection injections)</li>
-                        <li><i class="fas fa-database"></i> <strong>Base de Données :</strong> Gestion des données relationnelles et NoSQL avec optimisation des performances</li>
+                        <li><i class="fas fa-server"></i> <strong>Technologies Serveur :</strong> Node.js (Express), Python (Django/Flask), PHP (Laravel) - Backend robuste et scalable</li>
+                        <li><i class="fas fa-lock"></i> <strong>Sécurité Avancée :</strong> JWT, OAuth, protection contre les injections, validation des données</li>
+                        <li><i class="fas fa-database"></i> <strong>Gestion des Données :</strong> Bases relationnelles et NoSQL avec optimisation des performances</li>
+                        <li><i class="fas fa-project-diagram"></i> <strong>Architecture Microservices :</strong> Solutions modulaires et évolutives</li>
                     </ul>
                     <div class="tech-stack">
                         <span class="tech-tag">Node.js</span>
@@ -756,6 +915,7 @@
                         <span class="tech-tag">MongoDB</span>
                         <span class="tech-tag">Redis</span>
                         <span class="tech-tag">GraphQL</span>
+                        <span class="tech-tag">REST API</span>
                     </div>
                 </div>
             </div>
@@ -765,14 +925,15 @@
                     <i class="fas fa-cloud-upload-alt"></i>
                 </div>
                 <div class="service-content">
-                    <h4>Infrastructure et Déploiement (DevOps)</h4>
+                    <h4>Infrastructure Cloud & DevOps</h4>
                     <p>
-                        Assurer que votre application soit disponible, stable et évolutive. Je gère la configuration des serveurs, l'intégration continue (CI/CD) et la surveillance.
+                        Assurer que votre application soit disponible, stable et évolutive. Je gère la configuration des serveurs, l'intégration continue (CI/CD) et la surveillance en production pour des performances optimales.
                     </p>
                     <ul class="service-features">
-                        <li><i class="fab fa-aws"></i> <strong>Cloud :</strong> Déploiement sur AWS, Azure ou Google Cloud Platform avec architecture scalable</li>
-                        <li><i class="fas fa-wrench"></i> <strong>Conteneurisation :</strong> Utilisation de Docker pour un environnement cohérent du dev à la prod</li>
+                        <li><i class="fab fa-aws"></i> <strong>Cloud & Hosting :</strong> Déploiement sur AWS, Azure, Google Cloud avec architecture scalable</li>
+                        <li><i class="fas fa-wrench"></i> <strong>Conteneurisation :</strong> Docker pour un environnement cohérent du développement à la production</li>
                         <li><i class="fas fa-sync-alt"></i> <strong>CI/CD :</strong> Automatisation du déploiement via GitHub Actions, GitLab CI ou Jenkins</li>
+                        <li><i class="fas fa-shield-alt"></i> <strong>Sécurité Infrastructure :</strong> Configuration des firewalls, SSL et monitoring de sécurité</li>
                     </ul>
                     <div class="tech-stack">
                         <span class="tech-tag">Docker</span>
@@ -781,6 +942,7 @@
                         <span class="tech-tag">Nginx</span>
                         <span class="tech-tag">Linux</span>
                         <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">CI/CD</span>
                     </div>
                 </div>
             </div>
@@ -788,10 +950,72 @@
         </div>
     </section>
 
+    <!-- SECTION TARIFS AVANCÉE -->
+    <section class="pricing-section">
+        <div class="container">
+            <span class="section-pretitle fade-in-up" style="display: block; text-align: center; font-size: 0.9em; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px;">Tarification</span>
+            <h3 style="text-align: center; margin-bottom: 20px;" class="fade-in-up">Solutions Adaptées à Votre Budget</h3>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto 50px; color: var(--dark-grey);" class="fade-in-up">Des forfaits flexibles pour répondre à tous vos besoins de développement web</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in-up">
+                    <div class="pricing-header">
+                        <div class="pricing-name">Starter</div>
+                        <div class="pricing-price">$999</div>
+                        <div class="pricing-period">Projet simple</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Site vitrine 5 pages</li>
+                        <li><i class="fas fa-check"></i> Design responsive</li>
+                        <li><i class="fas fa-check"></i> Formulaire de contact</li>
+                        <li><i class="fas fa-check"></i> Hébergement 1 an</li>
+                        <li><i class="fas fa-times"></i> E-commerce</li>
+                        <li><i class="fas fa-times"></i> Base de données</li>
+                    </ul>
+                    <a href="#contact" class="btn secondary-btn">Démarrer</a>
+                </div>
+                
+                <div class="pricing-card featured fade-in-up">
+                    <div class="pricing-header">
+                        <div class="pricing-name">Business</div>
+                        <div class="pricing-price">$2,499</div>
+                        <div class="pricing-period">Solution complète</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Application web sur mesure</li>
+                        <li><i class="fas fa-check"></i> Backend avec base de données</li>
+                        <li><i class="fas fa-check"></i> Panel d'administration</li>
+                        <li><i class="fas fa-check"></i> API RESTful</li>
+                        <li><i class="fas fa-check"></i> Hébergement + SSL</li>
+                        <li><i class="fas fa-check"></i> Support 3 mois</li>
+                    </ul>
+                    <a href="#contact" class="btn primary-btn">Choisir</a>
+                </div>
+                
+                <div class="pricing-card fade-in-up">
+                    <div class="pricing-header">
+                        <div class="pricing-name">Enterprise</div>
+                        <div class="pricing-price">$4,999+</div>
+                        <div class="pricing-period">Solution premium</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Application complexe</li>
+                        <li><i class="fas fa-check"></i> Architecture microservices</li>
+                        <li><i class="fas fa-check"></i> Infrastructure cloud</li>
+                        <li><i class="fas fa-check"></i> CI/CD automatisé</li>
+                        <li><i class="fas fa-check"></i> Sécurité avancée</li>
+                        <li><i class="fas fa-check"></i> Support 6 mois</li>
+                    </ul>
+                    <a href="#contact" class="btn secondary-btn">Personnaliser</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- SECTION PROCESSUS AVANCÉE -->
     <section class="process-section section-padded">
         <div class="container">
-            <span class="section-pretitle fade-in-up" style="display: block; text-align: center; font-size: 0.9em; font-weight: 700; color: var(--accent-dark); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px;">Méthodologie</span>
+            <span class="section-pretitle fade-in-up" style="display: block; text-align: center; font-size: 0.9em; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px;">Méthodologie</span>
             <h3 style="text-align: center; margin-bottom: 20px;" class="fade-in-up">Processus de Développement Structuré</h3>
             <p style="text-align: center; max-width: 600px; margin: 0 auto 50px; color: var(--dark-grey);" class="fade-in-up">Une approche méthodique pour garantir la réussite de votre projet à chaque étape</p>
             
@@ -800,25 +1024,25 @@
                     <div class="step-number">1</div>
                     <i class="fas fa-lightbulb"></i>
                     <h4>Analyse & Conception</h4>
-                    <p>Étude approfondie de vos besoins et conception de l'architecture technique avec spécifications détaillées</p>
+                    <p>Étude approfondie de vos besoins et conception de l'architecture technique avec spécifications détaillées et planification du projet</p>
                 </div>
                 <div class="process-step fade-in-up">
                     <div class="step-number">2</div>
                     <i class="fas fa-code"></i>
                     <h4>Développement Agile</h4>
-                    <p>Implémentation itérative avec revues de code, tests continus et démonstrations régulières</p>
+                    <p>Implémentation itérative avec revues de code, tests continus et démonstrations régulières pour validation client</p>
                 </div>
                 <div class="process-step fade-in-up">
                     <div class="step-number">3</div>
                     <i class="fas fa-vial"></i>
                     <h4>Tests & Validation</h4>
-                    <p>Tests rigoureux (unitaires, d'intégration) et validation des fonctionnalités avec le client</p>
+                    <p>Tests rigoureux (unitaires, d'intégration, de performance) et validation des fonctionnalités avec le client</p>
                 </div>
                 <div class="process-step fade-in-up">
                     <div class="step-number">4</div>
                     <i class="fas fa-rocket"></i>
                     <h4>Déploiement & Support</h4>
-                    <p>Mise en production sécurisée et support technique post-livraison avec documentation complète</p>
+                    <p>Mise en production sécurisée et support technique post-livraison avec documentation complète et formation</p>
                 </div>
             </div>
         </div>
@@ -826,8 +1050,8 @@
 
     <section id="cta-final" class="section-cta">
         <div class="container">
-            <h3 class="fade-in-up">Prêt à Passer du Concept à la Réalité ?</h3>
-            <p class="fade-in-up">Transformons votre idée en une application Full Stack de classe mondiale. Contactez-moi pour une analyse gratuite de votre projet.</p>
+            <h3 class="fade-in-up">Prêt à Transformer Votre Idée en Réalité ?</h3>
+            <p class="fade-in-up">Discutons de votre projet pour créer une solution digitale qui propulsera votre business vers de nouveaux sommets.</p>
             <a href="#contact" class="btn dark-btn large-btn fade-in-up">
                 <i class="fas fa-paper-plane"></i> Démarrer mon Projet
             </a>
@@ -839,7 +1063,7 @@
             <div class="footer-grid">
                 <div class="footer-info">
                     <h4>Gabby Umba <span class="accent-dot">.</span></h4>
-                    <p>Je suis parti de zéro.</p>
+                    <p>Transformation digitale sur mesure pour votre réussite.</p>
                     <div class="social-links">
                         <a href="https://www.linkedin.com/in/gabby-umba-30a1a2265" target="_blank" title="LinkedIn">
                             <i class="fab fa-linkedin"></i>
@@ -867,7 +1091,7 @@
                     </ul>
                 </div>
                 <div class="footer-contact">
-                    <h5>Démarrons un Projet</h5>
+                    <h5>Démarrons Votre Projet</h5>
                     <p>
                         <i class="fas fa-envelope"></i> 
                         <a href="mailto:gabbyumba344@gmail.com" style="color: var(--light-grey);">gabbyumba344@gmail.com</a>
@@ -878,15 +1102,15 @@
                     </p>
                     <p>
                         <i class="fab fa-whatsapp"></i>
-                        <a href="https://wa.me/243997227819" style="color: var(--light-grey);">WhatsApp</a>
+                        <a href="https://wa.me/243997227819" style="color: var(--light-grey);">WhatsApp Professionnel</a>
                     </p>
                     <p style="margin-top: 10px;">
-                        <i class="fas fa-map-marker-alt"></i> Basé à Kolwezi (RDC)
+                        <i class="fas fa-map-marker-alt"></i> Basé à Kolwezi (RDC) - Interventions Internationales
                     </p>
                 </div>
             </div>
             <div class="copyright">
-                &copy; 2025 Gabby Umba. Tous droits réservés.
+                &copy; 2025 Gabby Umba. Tous droits réservés. | Conçu avec passion pour l'excellence
             </div>
         </div>
     </footer>
@@ -916,7 +1140,7 @@
 
         // Observer tous les éléments avec des classes d'animation
         document.addEventListener('DOMContentLoaded', () => {
-            const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .scale-in, .service-block, .process-step');
+            const animatedElements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .scale-in, .service-block, .process-step, .pricing-card');
             animatedElements.forEach(el => observer.observe(el));
 
             // Animation de la navbar au scroll
@@ -946,23 +1170,23 @@
 
         // Console log professionnel
         console.log(`%c
-╔═══════════════════════════════════════╗
-║          SERVICES GABBY UMBA          ║
-║      Développement Full Stack 🚀      ║
-║                                       ║
-║   🎯 Front-end Avancé                ║
-║   🔧 Back-end Sécurisé               ║
-║   ☁️  Infrastructure DevOps          ║
-║                                       ║
-║   📧 gabbyumba344@gmail.com          ║
-║   📱 +243 99 72 27 819              ║
-╚═══════════════════════════════════════╝
+╔══════════════════════════════════════════════════╗
+║              SERVICES GABBY UMBA                 ║
+║           Développement Full Stack Expert        ║
+║                                                  ║
+║    🎯 Front-end Avancé                         ║
+║    🔧 Architecture Back-end                    ║
+║    ☁️  Infrastructure Cloud & DevOps           ║
+║                                                  ║
+║    📧 gabbyumba344@gmail.com                   ║
+║    📱 +243 99 72 27 819                       ║
+╚══════════════════════════════════════════════════╝
 
 Découvrez comment je peux transformer 
 vos idées en solutions digitales 
 performantes et évolutives. 💡
 
-        `, 'color: #00A36C; font-family: "Courier New", monospace; font-size: 12px; font-weight: bold;');
+        `, 'color: #00D4AA; font-family: "Courier New", monospace; font-size: 12px; font-weight: bold;');
 
         // Animation de progression au scroll
         function createScrollProgress() {
@@ -972,7 +1196,7 @@ performantes et évolutives. 💡
                 top: 0;
                 left: 0;
                 height: 3px;
-                background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+                background: var(--gradient-primary);
                 width: 0%;
                 z-index: 1001;
                 transition: width 0.1s ease;
@@ -992,15 +1216,15 @@ performantes et évolutives. 💡
 
         // Animation de confetti pour les actions importantes
         function createConfetti() {
-            const colors = ['#00A36C', '#007C53', '#4A4A4A', '#FFFFFF'];
+            const colors = ['#00D4AA', '#00B894', '#4A5568', '#FFFFFF'];
             const confettiCount = 50;
             
             for (let i = 0; i < confettiCount; i++) {
                 const confetti = document.createElement('div');
                 confetti.style.cssText = `
                     position: fixed;
-                    width: 10px;
-                    height: 10px;
+                    width: 12px;
+                    height: 12px;
                     background: ${colors[Math.floor(Math.random() * colors.length)]};
                     border-radius: 2px;
                     top: -10px;
@@ -1038,7 +1262,7 @@ performantes et évolutives. 💡
 
         // Final initialization
         console.log('%c✅ Services Gabby Umba initialisés avec succès!', 
-            'color: #00A36C; font-size: 16px; font-weight: bold; background: #e8f6f0; padding: 10px; border-radius: 5px;');
+            'color: #00D4AA; font-size: 16px; font-weight: bold; background: #E8F9F5; padding: 12px; border-radius: 8px;');
 
     </script>
 </body>
