@@ -3,277 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gabby Umba | Développeur Full Stack Expert</title>
-    <meta name="description" content="Développeur Full Stack expert créant des solutions web performantes et innovantes. Spécialisé en React, Node.js et architectures cloud.">
+    <title>Gabby Umba | Software Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
-    
     <style>
-        /* VARIABLES GLOBALES */
-        :root {
-            --white: #FFFFFF;
-            --black: #0A0A0A;
-            --accent: #00D4AA;
-            --accent-dark: #00B894;
-            --accent-light: #E8F9F5;
-            --light-grey: #F8F9FA;
-            --dark-grey: #4A5568;
-            --gradient-primary: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
-            --font-heading: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-            --font-body: 'Inter', 'Arial', sans-serif;
-            --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.08);
-            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
-            --shadow-heavy: 0 20px 60px rgba(0, 0, 0, 0.15);
-            --shadow-glow: 0 0 30px rgba(0, 212, 170, 0.3);
-            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --border-radius: 16px;
-            --border-radius-lg: 24px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        * { 
-            box-sizing: border-box; 
-            margin: 0; 
-            padding: 0; 
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body { 
-            font-family: var(--font-body); 
-            color: var(--black); 
-            background-color: var(--white); 
-            line-height: 1.7; 
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
             overflow-x: hidden;
         }
-        
-        body::before {
-            content: '';
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Navigation */
+        nav {
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 10% 20%, rgba(0, 212, 170, 0.03) 0%, transparent 30%),
-                radial-gradient(circle at 90% 80%, rgba(0, 180, 148, 0.03) 0%, transparent 30%);
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        .container { 
-            max-width: 1320px; 
-            margin: 0 auto; 
-            padding: 0 20px; 
-        }
-        
-        /* TYPOGRAPHIE */
-        h1, h2, h3, h4 { 
-            font-family: var(--font-heading); 
-            font-weight: 700; 
-            line-height: 1.2; 
-            letter-spacing: -0.02em;
-        }
-        
-        h2 { 
-            font-size: clamp(2.5rem, 5vw, 3.5rem); 
-        }
-        
-        /* NAVIGATION SIMPLE & ÉLÉGANTE */
-        nav { 
-            background-color: rgba(255, 255, 255, 0.92); 
-            padding: 20px 0; 
-            box-shadow: var(--shadow-light); 
-            position: fixed; 
-            top: 0; 
-            left: 0;
-            right: 0;
-            z-index: 1000; 
-            backdrop-filter: blur(15px);
-            transition: all var(--transition);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        nav.scrolled {
-            padding: 15px 0;
-            box-shadow: var(--shadow-medium);
-            background-color: rgba(255, 255, 255, 0.98);
-        }
-        
-        nav .container { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-        }
-        
-        .logo { 
-            font-size: 1.8rem; 
-            font-weight: 800; 
-            color: var(--black); 
-        }
-        
-        .logo span { 
-            color: var(--accent); 
-        }
-        
-        nav ul { 
-            list-style: none; 
-            display: flex; 
-            gap: 40px; 
-        }
-        
-        nav a { 
-            font-weight: 500; 
-            font-size: 1rem; 
-            padding: 8px 0; 
-            position: relative; 
-            color: var(--dark-grey); 
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        nav a:after { 
-            content: ''; 
-            position: absolute; 
-            width: 0; 
-            height: 2px; 
-            bottom: 0; 
-            left: 0; 
-            background: var(--gradient-primary);
-            transition: width var(--transition); 
-            border-radius: 2px;
-        }
-        
-        nav a:hover:after, 
-        nav a.active:after { 
-            width: 100%; 
+            z-index: 1000;
+            padding: 20px 0;
         }
 
-        /* BOUTONS */
-        .btn { 
-            padding: 14px 32px; 
-            border-radius: 50px; 
-            font-weight: 600; 
-            display: inline-flex;
+        nav .container {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 10px;
-            transition: all var(--transition); 
-            border: 2px solid transparent; 
-            cursor: pointer; 
-            text-decoration: none;
-            font-size: 1rem;
-        }
-        
-        .primary-btn { 
-            background: var(--gradient-primary);
-            color: var(--white); 
-            box-shadow: var(--shadow-light);
-        }
-        
-        .primary-btn:hover { 
-            transform: translateY(-3px); 
-            box-shadow: var(--shadow-glow);
-        }
-        
-        .secondary-btn { 
-            background-color: transparent; 
-            border-color: var(--dark-grey); 
-            color: var(--dark-grey); 
-        }
-        
-        .secondary-btn:hover { 
-            background-color: var(--dark-grey); 
-            color: var(--white); 
-            transform: translateY(-3px); 
         }
 
-        /* HERO SECTION - Style exactement comme l'image */
-        .hero { 
-            background: linear-gradient(135deg, var(--light-grey) 0%, #ffffff 100%);
-            padding: 180px 0 120px; 
-            position: relative; 
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #00D4AA;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00D4AA;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
+            padding: 120px 0;
+            background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+            position: relative;
+            overflow: hidden;
         }
-        
-        .hero .container { 
-            display: flex; 
-            align-items: center; 
-            gap: 60px; 
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0,212,170,0.1) 0%, transparent 70%);
+            top: -250px;
+            right: -250px;
+            border-radius: 50%;
         }
-        
-        .hero-content { 
-            flex: 1;
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
         }
-        
+
         .hero-greeting {
             font-size: 1.2rem;
-            color: var(--accent);
-            font-weight: 600;
+            color: #666;
             margin-bottom: 15px;
-            text-transform: uppercase;
             letter-spacing: 3px;
+            text-transform: uppercase;
         }
-        
+
         .hero-name {
-            font-size: 4.5rem;
+            font-size: 5rem;
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 25px;
-            color: var(--black);
-        }
-        
-        .hero-name span {
-            color: var(--accent);
-        }
-        
-        .hero-description { 
-            font-size: 1.2rem; 
-            color: var(--dark-grey); 
-            margin-bottom: 35px;
-            max-width: 600px;
-        }
-        
-        .hero-image { 
-            flex: 1;
-            text-align: center; 
-            position: relative;
-        }
-        
-        .hero-image img { 
-            max-width: 100%; 
-            height: auto; 
-            border-radius: 30px; 
-            box-shadow: var(--shadow-heavy); 
-            object-fit: cover; 
-            width: 400px; 
-            height: 400px; 
-            transition: all var(--transition);
-            border: 4px solid white;
-        }
-        
-        .hero-image img:hover { 
-            transform: scale(1.02);
-            box-shadow: var(--shadow-glow);
         }
 
-        /* SECTION MY WORK */
+        .hero-name span {
+            color: #00D4AA;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: #4a4a4a;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Work Section */
         .work-section {
             padding: 100px 0;
-            background: var(--white);
+            background: white;
         }
-        
+
         .section-title {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 700;
             text-align: center;
             margin-bottom: 60px;
             position: relative;
         }
-        
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -282,103 +179,100 @@
             transform: translateX(-50%);
             width: 60px;
             height: 3px;
-            background: var(--accent);
+            background: #00D4AA;
         }
-        
+
         .work-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
-        
+
         .work-card {
-            background: var(--white);
+            background: #fff;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: var(--shadow-light);
-            transition: all var(--transition);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s;
             border: 1px solid rgba(0,0,0,0.05);
         }
-        
+
         .work-card:hover {
             transform: translateY(-10px);
-            box-shadow: var(--shadow-medium);
+            box-shadow: 0 20px 40px rgba(0,212,170,0.1);
         }
-        
+
         .work-image {
             height: 250px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
+            overflow: hidden;
         }
-        
+
+        .work-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .work-card:hover .work-image img {
+            transform: scale(1.1);
+        }
+
         .work-content {
-            padding: 30px;
+            padding: 25px;
         }
-        
+
         .work-content h3 {
             font-size: 1.5rem;
             margin-bottom: 10px;
         }
-        
+
         .work-content p {
-            color: var(--dark-grey);
+            color: #666;
             margin-bottom: 15px;
         }
-        
+
         .work-tags {
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
         }
-        
+
         .work-tags span {
-            background: var(--accent-light);
-            color: var(--accent-dark);
+            background: rgba(0,212,170,0.1);
+            color: #00D4AA;
             padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 600;
         }
 
-        /* CONTACT FOOTER */
+        /* Footer */
         .contact-footer {
-            background: var(--black);
+            background: #1a1a1a;
             color: white;
-            padding: 100px 0 50px;
+            padding: 80px 0;
             text-align: center;
         }
-        
+
         .contact-email {
-            font-size: 3rem;
-            font-weight: 300;
-            color: var(--accent);
+            font-size: 2.5rem;
+            color: #00D4AA;
             text-decoration: none;
-            border-bottom: 2px solid var(--accent);
+            border-bottom: 2px solid #00D4AA;
             padding-bottom: 10px;
-            transition: all var(--transition);
             display: inline-block;
             margin-bottom: 40px;
         }
-        
-        .contact-email:hover {
-            color: white;
-            border-bottom-color: white;
-            transform: translateY(-5px);
-        }
-        
+
         .social-links {
             display: flex;
             justify-content: center;
             gap: 20px;
         }
-        
+
         .social-links a {
             color: white;
-            font-size: 1.3rem;
             width: 45px;
             height: 45px;
             background: rgba(255,255,255,0.1);
@@ -386,22 +280,22 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all var(--transition);
             text-decoration: none;
+            transition: all 0.3s;
         }
-        
+
         .social-links a:hover {
-            background: var(--accent);
+            background: #00D4AA;
             transform: translateY(-5px) rotate(360deg);
         }
-        
+
         .copyright {
-            margin-top: 60px;
-            color: var(--dark-grey);
+            margin-top: 40px;
+            color: #888;
             font-size: 0.9rem;
         }
 
-        /* ANIMATIONS */
+        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -412,93 +306,64 @@
                 transform: translateY(0);
             }
         }
-        
+
         .fade-in-up {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease;
-        }
-        
-        .fade-in-up.visible {
-            opacity: 1;
-            transform: translateY(0);
+            animation: fadeInUp 0.8s ease forwards;
         }
 
-        /* RESPONSIVE */
+        /* Responsive */
         @media (max-width: 992px) {
-            .hero .container {
-                flex-direction: column-reverse;
+            .hero-image {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                margin: 40px auto 0;
+            }
+            
+            .hero-content {
                 text-align: center;
-            }
-            
-            .hero-description {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            
-            .work-grid {
-                grid-template-columns: repeat(2, 1fr);
+                margin: 0 auto;
             }
             
             .hero-name {
                 font-size: 3.5rem;
             }
             
-            .contact-email {
-                font-size: 2.5rem;
+            .work-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
-        
+
         @media (max-width: 768px) {
             nav .container {
                 flex-direction: column;
                 gap: 15px;
             }
             
-            nav ul {
+            .nav-links {
                 gap: 25px;
-            }
-            
-            .work-grid {
-                grid-template-columns: 1fr;
             }
             
             .hero-name {
                 font-size: 2.8rem;
             }
             
-            .hero-image img {
-                width: 300px;
-                height: 300px;
+            .work-grid {
+                grid-template-columns: 1fr;
             }
             
             .contact-email {
                 font-size: 2rem;
             }
         }
-        
-        @media (max-width: 480px) {
-            .hero-name {
-                font-size: 2.2rem;
-            }
-            
-            nav ul {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .section-title {
-                font-size: 2.2rem;
-            }
-        }
     </style>
 </head>
 <body>
-    <nav id="navbar">
+    <nav>
         <div class="container">
             <div class="logo">Gabby <span>Umba</span></div>
-            <ul>
+            <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="about.html">AboutMe</a></li>
                 <li><a href="services.html">Service</a></li>
@@ -515,58 +380,53 @@
                 <p class="hero-description">
                     I am Software Engineer, web developer. I am passionate about computers, programming and new technologies in general. I consider myself a self-taught person with a thirst for learning new things and solving problems in my company.
                 </p>
-                <a href="portfolio.html" class="btn primary-btn">
-                    <i class="fas fa-arrow-right"></i> View My Work
-                </a>
             </div>
             <div class="hero-image fade-in-up">
-                <img src="profil.jpeg" alt="Gabby Umba" onerror="this.src='https://via.placeholder.com/400x400'">
+                <img src="photoprincipal.jpg" alt="Gabby Umba">
             </div>
         </div>
     </section>
-    
+
     <section class="work-section">
         <div class="container">
             <h2 class="section-title fade-in-up">My Work</h2>
             <div class="work-grid">
                 <div class="work-card fade-in-up">
-                    <div class="work-image" style="background: linear-gradient(135deg, #00D4AA 0%, #00B894 100%);">
-                        <i class="fas fa-laptop-code"></i>
+                    <div class="work-image">
+                        <img src="logistique.jpg" alt="Logistique Project">
                     </div>
                     <div class="work-content">
-                        <h3>Web Application</h3>
-                        <p>E-commerce platform with real-time inventory</p>
+                        <h3>Logistique</h3>
+                        <p>Plateforme de gestion logistique</p>
                         <div class="work-tags">
                             <span>React</span>
                             <span>Node.js</span>
-                            <span>MongoDB</span>
                         </div>
                     </div>
                 </div>
                 <div class="work-card fade-in-up">
-                    <div class="work-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                        <i class="fas fa-mobile-alt"></i>
+                    <div class="work-image">
+                        <img src="gestion.jpg" alt="Gestion Project">
                     </div>
                     <div class="work-content">
-                        <h3>Mobile App</h3>
-                        <p>Fitness tracker with AI coaching</p>
+                        <h3>Gestion</h3>
+                        <p>Application de gestion d'entreprise</p>
                         <div class="work-tags">
-                            <span>React Native</span>
-                            <span>Firebase</span>
+                            <span>Vue.js</span>
+                            <span>Django</span>
                         </div>
                     </div>
                 </div>
                 <div class="work-card fade-in-up">
-                    <div class="work-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                        <i class="fas fa-cloud"></i>
+                    <div class="work-image">
+                        <img src="ecommerce.jpg" alt="E-commerce">
                     </div>
                     <div class="work-content">
-                        <h3>Cloud Architecture</h3>
-                        <p>AWS microservices for scalable applications</p>
+                        <h3>E-commerce</h3>
+                        <p>Plateforme e-commerce complète</p>
                         <div class="work-tags">
-                            <span>AWS</span>
-                            <span>Docker</span>
-                            <span>Kubernetes</span>
+                            <span>Next.js</span>
+                            <span>Stripe</span>
                         </div>
                     </div>
                 </div>
@@ -579,44 +439,41 @@
             <h2 class="section-title fade-in-up">My Work</h2>
             <div class="work-grid">
                 <div class="work-card fade-in-up">
-                    <div class="work-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                        <i class="fas fa-database"></i>
+                    <div class="work-image">
+                        <img src="applicationgestion.jpg" alt="Application Gestion">
                     </div>
                     <div class="work-content">
-                        <h3>Database Design</h3>
-                        <p>Scalable data architecture for big data</p>
+                        <h3>Application Gestion</h3>
+                        <p>App de gestion de stock</p>
                         <div class="work-tags">
-                            <span>PostgreSQL</span>
-                            <span>Redis</span>
+                            <span>React Native</span>
+                            <span>Firebase</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="work-card fade-in-up">
+                    <div class="work-image">
+                        <img src="alarechercheprojet.jpg" alt="Recherche Projet">
+                    </div>
+                    <div class="work-content">
+                        <h3>Recherche Projet</h3>
+                        <p>Plateforme de recherche</p>
+                        <div class="work-tags">
+                            <span>Python</span>
                             <span>Elasticsearch</span>
                         </div>
                     </div>
                 </div>
                 <div class="work-card fade-in-up">
-                    <div class="work-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="work-content">
-                        <h3>Cybersecurity</h3>
-                        <p>Penetration testing and security audit</p>
-                        <div class="work-tags">
-                            <span>OAuth</span>
-                            <span>JWT</span>
-                            <span>Encryption</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="work-card fade-in-up">
-                    <div class="work-image" style="background: linear-gradient(135deg, #5f2c82 0%, #49a09d 100%);">
-                        <i class="fas fa-chart-line"></i>
+                    <div class="work-image">
+                        <img src="alarechercheprojet2.jpg" alt="Recherche Projet 2">
                     </div>
                     <div class="work-content">
                         <h3>Analytics</h3>
-                        <p>Real-time dashboard with D3.js</p>
+                        <p>Dashboard analytics</p>
                         <div class="work-tags">
                             <span>D3.js</span>
-                            <span>WebSocket</span>
-                            <span>Python</span>
+                            <span>MongoDB</span>
                         </div>
                     </div>
                 </div>
@@ -628,10 +485,10 @@
         <div class="container">
             <a href="mailto:gabbyumba344@gmail.com" class="contact-email">gabbyumba344@gmail.com</a>
             <div class="social-links">
-                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
             <div class="copyright">
                 &copy; 2025 Gabby Umba. All rights reserved.
@@ -640,37 +497,26 @@
     </footer>
 
     <script>
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Active link highlighting
+        // Active link
         const currentLocation = window.location.pathname.split('/').pop() || 'index.html';
-        const navLinks = document.querySelectorAll('nav a');
+        const navLinks = document.querySelectorAll('.nav-links a');
         
         navLinks.forEach(link => {
-            if (link.getAttribute('href') === currentLocation) {
+            if(link.getAttribute('href') === currentLocation) {
                 link.classList.add('active');
             }
         });
 
-        // Scroll animation
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-in-up').forEach(el => {
-            observer.observe(el);
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if(window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
         });
     </script>
 </body>
