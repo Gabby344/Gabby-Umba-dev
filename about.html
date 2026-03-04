@@ -6,34 +6,54 @@
     <title>About Me | Gabby Umba</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --white: #FFFFFF;
+            --black: #0A0A0A;
+            --accent: #00D4AA;
+            --accent-dark: #00B894;
+            --accent-light: #E8F9F5;
+            --light-grey: #F8F9FA;
+            --dark-grey: #4A5568;
+            --gradient-primary: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            --font-heading: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            --font-body: 'Inter', 'Arial', sans-serif;
+            --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --shadow-heavy: 0 20px 60px rgba(0, 0, 0, 0.15);
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
         }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            font-family: 'Inter', sans-serif;
-            color: #1a1a1a;
-            line-height: 1.6;
+            font-family: var(--font-body);
+            color: var(--black);
+            line-height: 1.7;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 30px;
+            padding: 0 20px;
         }
 
         /* Navigation */
         nav {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             z-index: 1000;
-            padding: 20px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        nav.scrolled {
+            padding: 15px 0;
+            box-shadow: var(--shadow-medium);
         }
 
         nav .container {
@@ -43,62 +63,60 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.8rem;
+            font-weight: 800;
         }
 
         .logo span {
-            color: #00D4AA;
+            color: var(--accent);
         }
 
-        .nav-links {
+        nav ul {
             display: flex;
             gap: 40px;
             list-style: none;
         }
 
-        .nav-links a {
+        nav a {
             text-decoration: none;
-            color: #1a1a1a;
+            color: var(--dark-grey);
             font-weight: 500;
-            transition: color 0.3s;
             position: relative;
         }
 
-        .nav-links a::after {
+        nav a::after {
             content: '';
             position: absolute;
             bottom: -5px;
             left: 0;
             width: 0;
             height: 2px;
-            background: #00D4AA;
+            background: var(--accent);
             transition: width 0.3s;
         }
 
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
+        nav a:hover::after,
+        nav a.active::after {
             width: 100%;
         }
 
         /* Page Header */
         .page-header {
             padding: 180px 0 80px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            background: linear-gradient(135deg, var(--light-grey) 0%, #fff 100%);
             text-align: center;
         }
 
         .page-header h1 {
             font-size: 4rem;
             font-weight: 800;
-            margin-bottom: 20px;
         }
 
         .page-header h1 span {
-            color: #00D4AA;
+            color: var(--accent);
         }
 
-        /* About Content */
+        /* About Section */
         .about-section {
             padding: 100px 0;
         }
@@ -106,8 +124,9 @@
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            gap: 60px;
             align-items: center;
+            margin-bottom: 80px;
         }
 
         .about-image {
@@ -117,12 +136,7 @@
         .about-image img {
             width: 100%;
             border-radius: 30px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
-            transition: transform 0.4s;
-        }
-
-        .about-image:hover img {
-            transform: scale(1.02);
+            box-shadow: var(--shadow-heavy);
         }
 
         .about-image::before {
@@ -132,24 +146,25 @@
             left: -20px;
             width: 100%;
             height: 100%;
-            border: 3px solid #00D4AA;
+            border: 3px solid var(--accent);
             border-radius: 30px;
             z-index: -1;
         }
 
         .about-content h2 {
             font-size: 2.5rem;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .about-content p {
-            color: #666;
-            margin-bottom: 25px;
+            color: var(--dark-grey);
+            margin-bottom: 20px;
             font-size: 1.1rem;
         }
 
-        .skills-list {
-            margin-top: 40px;
+        /* Skills */
+        .skills-section {
+            margin-top: 60px;
         }
 
         .skill-item {
@@ -159,7 +174,7 @@
         .skill-info {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-weight: 600;
         }
 
@@ -172,7 +187,7 @@
 
         .progress-fill {
             height: 100%;
-            background: #00D4AA;
+            background: var(--accent);
             width: 0;
             transition: width 1.5s ease;
         }
@@ -182,39 +197,37 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 30px;
-            margin-top: 80px;
+            margin: 80px 0;
             text-align: center;
         }
 
         .stat-item {
             padding: 40px 20px;
-            background: #f8f9fa;
+            background: var(--light-grey);
             border-radius: 20px;
             transition: transform 0.3s;
         }
 
         .stat-item:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-medium);
         }
 
         .stat-number {
             font-size: 3rem;
             font-weight: 800;
-            color: #00D4AA;
+            color: var(--accent);
             margin-bottom: 10px;
         }
 
         .stat-label {
-            font-size: 1rem;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: var(--dark-grey);
+            font-weight: 600;
         }
 
         /* Footer */
         .contact-footer {
-            background: #1a1a1a;
+            background: var(--black);
             color: white;
             padding: 80px 0;
             text-align: center;
@@ -222,35 +235,41 @@
 
         .contact-email {
             font-size: 2.5rem;
-            color: #00D4AA;
+            color: var(--accent);
             text-decoration: none;
-            border-bottom: 2px solid #00D4AA;
+            border-bottom: 2px solid var(--accent);
             padding-bottom: 10px;
+            display: inline-block;
+            margin-bottom: 40px;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
+            gap: 20px;
         }
 
         .social-links a {
             color: white;
-            font-size: 1.5rem;
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             background: rgba(255,255,255,0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-decoration: none;
             transition: all 0.3s;
         }
 
         .social-links a:hover {
-            background: #00D4AA;
+            background: var(--accent);
             transform: translateY(-5px) rotate(360deg);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            color: var(--dark-grey);
         }
 
         /* Animations */
@@ -266,14 +285,20 @@
         }
 
         .fade-in-up {
-            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Responsive */
         @media (max-width: 992px) {
             .about-grid {
                 grid-template-columns: 1fr;
-                gap: 50px;
             }
             
             .stats-grid {
@@ -291,25 +316,25 @@
                 gap: 15px;
             }
             
-            .nav-links {
+            nav ul {
                 gap: 25px;
-            }
-            
-            .contact-email {
-                font-size: 1.8rem;
             }
             
             .stats-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .contact-email {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <nav>
+    <nav id="navbar">
         <div class="container">
             <div class="logo">Gabby <span>Umba</span></div>
-            <ul class="nav-links">
+            <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html" class="active">AboutMe</a></li>
                 <li><a href="services.html">Service</a></li>
@@ -328,50 +353,52 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-image fade-in-up">
-                    <img src="https://via.placeholder.com/600x800" alt="Gabby Umba">
+                    <img src="photodemoi.jpg" alt="Gabby Umba" onerror="this.src='https://via.placeholder.com/500x600'">
                 </div>
                 <div class="about-content fade-in-up">
-                    <h2>Who am I ?</h2>
-                    <p>I am a passionate Software Engineer and Web Developer with over 5 years of experience in creating innovative digital solutions. My journey in tech started with a simple curiosity about how computers work, which evolved into a deep passion for programming and problem-solving.</p>
-                    <p>I consider myself a lifelong learner, always eager to explore new technologies and methodologies. My approach combines technical excellence with creative thinking to deliver solutions that not only work but inspire.</p>
-                    
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Frontend Development</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Backend Development</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Database Design</span>
-                                <span>80%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Cloud Architecture</span>
-                                <span>75%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 75%"></div>
-                            </div>
-                        </div>
+                    <h2>Who am I?</h2>
+                    <p>I am Gabby Umba, a passionate Software Engineer and Web Developer based in Kolwezi, DRC. With over 5 years of experience in creating innovative digital solutions, I've had the privilege of working with diverse clients ranging from startups to established businesses.</p>
+                    <p>My journey in technology began with a simple curiosity about how computers work, which evolved into a deep passion for programming and problem-solving. I consider myself a lifelong learner, always eager to explore new technologies and methodologies.</p>
+                    <p>I believe in writing clean, maintainable code and creating user experiences that are both intuitive and impactful. When I'm not coding, you can find me exploring new tech trends, contributing to open-source projects, or mentoring aspiring developers.</p>
+                </div>
+            </div>
+
+            <div class="skills-section">
+                <h2 style="text-align: center; margin-bottom: 40px;">My Skills</h2>
+                <div class="skill-item fade-in-up">
+                    <div class="skill-info">
+                        <span>Frontend Development (React, Vue, Angular)</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item fade-in-up">
+                    <div class="skill-info">
+                        <span>Backend Development (Node.js, Python)</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-item fade-in-up">
+                    <div class="skill-info">
+                        <span>Database Design (SQL, NoSQL)</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div class="skill-item fade-in-up">
+                    <div class="skill-info">
+                        <span>Cloud & DevOps (AWS, Docker)</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%"></div>
                     </div>
                 </div>
             </div>
@@ -399,50 +426,47 @@
 
     <footer class="contact-footer">
         <div class="container">
-            <a href="mailto:gabbyumba@email.com" class="contact-email">gabbyumba@email.com</a>
+            <a href="mailto:gabbyumba344@gmail.com" class="contact-email">gabbyumba344@gmail.com</a>
             <div class="social-links">
                 <a href="#"><i class="fab fa-github"></i></a>
                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
+            <div class="copyright">
+                &copy; 2025 Gabby Umba. All rights reserved.
+            </div>
         </div>
     </footer>
 
     <script>
-        // Active link
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
         const currentLocation = window.location.pathname.split('/').pop() || 'index.html';
-        const navLinks = document.querySelectorAll('.nav-links a');
-        
+        const navLinks = document.querySelectorAll('nav a');
         navLinks.forEach(link => {
-            if(link.getAttribute('href') === currentLocation) {
+            if (link.getAttribute('href') === currentLocation) {
                 link.classList.add('active');
             }
         });
 
-        // Scroll animation
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('fade-in-up');
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
             });
-        });
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.stat-item, .about-image, .about-content').forEach(el => {
+        document.querySelectorAll('.fade-in-up').forEach(el => {
             observer.observe(el);
-        });
-
-        // Navbar scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if(window.scrollY > 100) {
-                nav.style.background = 'rgba(255, 255, 255, 0.98)';
-                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-            } else {
-                nav.style.background = 'rgba(255, 255, 255, 0.95)';
-                nav.style.boxShadow = 'none';
-            }
         });
     </script>
 </body>
