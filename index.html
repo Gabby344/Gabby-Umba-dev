@@ -3,192 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gabby Umba | Software Engineer</title>
+    <title>Gabby Umba | Développeur Full Stack Expert</title>
+    <meta name="description" content="Développeur Full Stack expert créant des solutions web performantes et innovantes. Spécialisé en React, Node.js et architectures cloud.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* VARIABLES GLOBALES */
+        :root {
+            --white: #FFFFFF;
+            --black: #0A0A0A;
+            --accent: #00D4AA;
+            --accent-dark: #00B894;
+            --accent-light: #E8F9F5;
+            --light-grey: #F8F9FA;
+            --dark-grey: #4A5568;
+            --gradient-primary: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            --font-heading: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            --font-body: 'Inter', 'Arial', sans-serif;
+            --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --shadow-heavy: 0 20px 60px rgba(0, 0, 0, 0.15);
+            --shadow-glow: 0 0 30px rgba(0, 212, 170, 0.3);
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
         }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #ffffff;
-            color: #1a1a1a;
-            line-height: 1.6;
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body { 
+            font-family: var(--font-body); 
+            color: var(--black); 
+            background-color: var(--white); 
+            line-height: 1.7; 
             overflow-x: hidden;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 30px;
-        }
-
-        /* Navigation */
-        nav {
+        
+        body::before {
+            content: '';
             position: fixed;
             top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            z-index: 1000;
-            padding: 20px 0;
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .logo span {
-            color: #00D4AA;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #1a1a1a;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
             left: 0;
-            width: 0;
-            height: 2px;
-            background: #00D4AA;
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
             width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(0, 212, 170, 0.03) 0%, transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(0, 180, 148, 0.03) 0%, transparent 30%);
+            pointer-events: none;
+            z-index: -1;
         }
-
-        .nav-links a:hover {
-            color: #00D4AA;
+        
+        .container { 
+            max-width: 1320px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
         }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 120px 0;
-            background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
-            position: relative;
-            overflow: hidden;
+        
+        /* TYPOGRAPHIE */
+        h1, h2, h3, h4 { 
+            font-family: var(--font-heading); 
+            font-weight: 700; 
+            line-height: 1.2; 
+            letter-spacing: -0.02em;
         }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0,212,170,0.1) 0%, transparent 70%);
-            top: -250px;
-            right: -250px;
-            border-radius: 50%;
+        
+        h2 { 
+            font-size: clamp(2.5rem, 5vw, 3.5rem); 
         }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0,212,170,0.05) 0%, transparent 70%);
-            bottom: -150px;
-            left: -150px;
-            border-radius: 50%;
+        
+        /* NAVIGATION SIMPLE & ÉLÉGANTE */
+        nav { 
+            background-color: rgba(255, 255, 255, 0.92); 
+            padding: 20px 0; 
+            box-shadow: var(--shadow-light); 
+            position: fixed; 
+            top: 0; 
+            left: 0;
+            right: 0;
+            z-index: 1000; 
+            backdrop-filter: blur(15px);
+            transition: all var(--transition);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
+        
+        nav.scrolled {
+            padding: 15px 0;
+            box-shadow: var(--shadow-medium);
+            background-color: rgba(255, 255, 255, 0.98);
         }
-
-        .hero-greeting {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 15px;
-            letter-spacing: 3px;
+        
+        nav .container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .logo { 
+            font-size: 1.8rem; 
+            font-weight: 800; 
+            color: var(--black); 
+        }
+        
+        .logo span { 
+            color: var(--accent); 
+        }
+        
+        nav ul { 
+            list-style: none; 
+            display: flex; 
+            gap: 40px; 
+        }
+        
+        nav a { 
+            font-weight: 500; 
+            font-size: 1rem; 
+            padding: 8px 0; 
+            position: relative; 
+            color: var(--dark-grey); 
+            text-decoration: none;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        nav a:after { 
+            content: ''; 
+            position: absolute; 
+            width: 0; 
+            height: 2px; 
+            bottom: 0; 
+            left: 0; 
+            background: var(--gradient-primary);
+            transition: width var(--transition); 
+            border-radius: 2px;
+        }
+        
+        nav a:hover:after, 
+        nav a.active:after { 
+            width: 100%; 
         }
 
-        .hero-name {
-            font-size: 5.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 25px;
-            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-description {
-            font-size: 1.3rem;
-            color: #4a4a4a;
-            max-width: 700px;
-            margin-bottom: 40px;
-            line-height: 1.8;
-        }
-
-        .hero-btn {
+        /* BOUTONS */
+        .btn { 
+            padding: 14px 32px; 
+            border-radius: 50px; 
+            font-weight: 600; 
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 15px 35px;
-            background: #00D4AA;
-            color: white;
+            transition: all var(--transition); 
+            border: 2px solid transparent; 
+            cursor: pointer; 
             text-decoration: none;
-            border-radius: 50px;
+            font-size: 1rem;
+        }
+        
+        .primary-btn { 
+            background: var(--gradient-primary);
+            color: var(--white); 
+            box-shadow: var(--shadow-light);
+        }
+        
+        .primary-btn:hover { 
+            transform: translateY(-3px); 
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .secondary-btn { 
+            background-color: transparent; 
+            border-color: var(--dark-grey); 
+            color: var(--dark-grey); 
+        }
+        
+        .secondary-btn:hover { 
+            background-color: var(--dark-grey); 
+            color: var(--white); 
+            transform: translateY(-3px); 
+        }
+
+        /* HERO SECTION - Style exactement comme l'image */
+        .hero { 
+            background: linear-gradient(135deg, var(--light-grey) 0%, #ffffff 100%);
+            padding: 180px 0 120px; 
+            position: relative; 
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero .container { 
+            display: flex; 
+            align-items: center; 
+            gap: 60px; 
+        }
+        
+        .hero-content { 
+            flex: 1;
+        }
+        
+        .hero-greeting {
+            font-size: 1.2rem;
+            color: var(--accent);
             font-weight: 600;
-            transition: all 0.3s;
-            border: 2px solid #00D4AA;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
-
-        .hero-btn:hover {
-            background: transparent;
-            color: #00D4AA;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,212,170,0.3);
+        
+        .hero-name {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            color: var(--black);
         }
-
-        /* Work Section */
-        .work-section {
-            padding: 120px 0;
-            background: white;
+        
+        .hero-name span {
+            color: var(--accent);
         }
-
-        .section-title {
-            font-size: 3rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 80px;
+        
+        .hero-description { 
+            font-size: 1.2rem; 
+            color: var(--dark-grey); 
+            margin-bottom: 35px;
+            max-width: 600px;
+        }
+        
+        .hero-image { 
+            flex: 1;
+            text-align: center; 
             position: relative;
         }
+        
+        .hero-image img { 
+            max-width: 100%; 
+            height: auto; 
+            border-radius: 30px; 
+            box-shadow: var(--shadow-heavy); 
+            object-fit: cover; 
+            width: 400px; 
+            height: 400px; 
+            transition: all var(--transition);
+            border: 4px solid white;
+        }
+        
+        .hero-image img:hover { 
+            transform: scale(1.02);
+            box-shadow: var(--shadow-glow);
+        }
 
+        /* SECTION MY WORK */
+        .work-section {
+            padding: 100px 0;
+            background: var(--white);
+        }
+        
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
         .section-title::after {
             content: '';
             position: absolute;
@@ -197,131 +282,126 @@
             transform: translateX(-50%);
             width: 60px;
             height: 3px;
-            background: #00D4AA;
+            background: var(--accent);
         }
-
+        
         .work-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
-
-        .work-item {
-            background: #fafafa;
+        
+        .work-card {
+            background: var(--white);
             border-radius: 20px;
             overflow: hidden;
-            transition: all 0.4s;
-            position: relative;
+            box-shadow: var(--shadow-light);
+            transition: all var(--transition);
             border: 1px solid rgba(0,0,0,0.05);
         }
-
-        .work-item:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        
+        .work-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
         }
-
+        
         .work-image {
             height: 250px;
-            background: linear-gradient(135deg, #e0e0e0 0%, #f0f0f0 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            overflow: hidden;
+            color: white;
+            font-size: 3rem;
         }
-
-        .work-image i {
-            font-size: 4rem;
-            color: #00D4AA;
-            transition: transform 0.4s;
-        }
-
-        .work-item:hover .work-image i {
-            transform: scale(1.2) rotate(5deg);
-        }
-
-        .work-info {
+        
+        .work-content {
             padding: 30px;
         }
-
-        .work-info h3 {
+        
+        .work-content h3 {
             font-size: 1.5rem;
             margin-bottom: 10px;
-            font-weight: 700;
         }
-
-        .work-info p {
-            color: #666;
-            font-size: 1rem;
+        
+        .work-content p {
+            color: var(--dark-grey);
+            margin-bottom: 15px;
         }
-
+        
         .work-tags {
             display: flex;
             gap: 10px;
-            margin-top: 15px;
             flex-wrap: wrap;
         }
-
+        
         .work-tags span {
-            background: rgba(0,212,170,0.1);
-            color: #00D4AA;
+            background: var(--accent-light);
+            color: var(--accent-dark);
             padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 600;
         }
 
-        /* Footer Contact */
+        /* CONTACT FOOTER */
         .contact-footer {
-            background: #1a1a1a;
+            background: var(--black);
             color: white;
-            padding: 100px 0;
+            padding: 100px 0 50px;
             text-align: center;
         }
-
+        
         .contact-email {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 300;
-            color: #00D4AA;
+            color: var(--accent);
             text-decoration: none;
-            border-bottom: 2px solid #00D4AA;
+            border-bottom: 2px solid var(--accent);
             padding-bottom: 10px;
-            transition: all 0.3s;
+            transition: all var(--transition);
             display: inline-block;
+            margin-bottom: 40px;
         }
-
+        
         .contact-email:hover {
             color: white;
             border-bottom-color: white;
             transform: translateY(-5px);
         }
-
+        
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 50px;
+            gap: 20px;
         }
-
+        
         .social-links a {
             color: white;
-            font-size: 1.5rem;
-            transition: all 0.3s;
-            width: 50px;
-            height: 50px;
+            font-size: 1.3rem;
+            width: 45px;
+            height: 45px;
             background: rgba(255,255,255,0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all var(--transition);
+            text-decoration: none;
         }
-
+        
         .social-links a:hover {
-            background: #00D4AA;
+            background: var(--accent);
             transform: translateY(-5px) rotate(360deg);
         }
+        
+        .copyright {
+            margin-top: 60px;
+            color: var(--dark-grey);
+            font-size: 0.9rem;
+        }
 
-        /* Animations */
+        /* ANIMATIONS */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -332,66 +412,80 @@
                 transform: translateY(0);
             }
         }
-
+        
         .fade-in-up {
-            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* Responsive */
+        /* RESPONSIVE */
         @media (max-width: 992px) {
-            .hero-name {
-                font-size: 4rem;
+            .hero .container {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
             }
             
             .work-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             
+            .hero-name {
+                font-size: 3.5rem;
+            }
+            
             .contact-email {
                 font-size: 2.5rem;
             }
         }
-
+        
         @media (max-width: 768px) {
             nav .container {
                 flex-direction: column;
                 gap: 15px;
             }
             
-            .nav-links {
+            nav ul {
                 gap: 25px;
-            }
-            
-            .hero-name {
-                font-size: 3rem;
-            }
-            
-            .hero-description {
-                font-size: 1.1rem;
             }
             
             .work-grid {
                 grid-template-columns: 1fr;
             }
             
+            .hero-name {
+                font-size: 2.8rem;
+            }
+            
+            .hero-image img {
+                width: 300px;
+                height: 300px;
+            }
+            
             .contact-email {
                 font-size: 2rem;
             }
         }
-
+        
         @media (max-width: 480px) {
             .hero-name {
                 font-size: 2.2rem;
             }
             
-            .nav-links {
+            nav ul {
                 gap: 15px;
                 flex-wrap: wrap;
                 justify-content: center;
-            }
-            
-            .contact-email {
-                font-size: 1.5rem;
             }
             
             .section-title {
@@ -401,10 +495,10 @@
     </style>
 </head>
 <body>
-    <nav>
+    <nav id="navbar">
         <div class="container">
             <div class="logo">Gabby <span>Umba</span></div>
-            <ul class="nav-links">
+            <ul>
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="about.html">AboutMe</a></li>
                 <li><a href="services.html">Service</a></li>
@@ -417,28 +511,31 @@
         <div class="container">
             <div class="hero-content fade-in-up">
                 <div class="hero-greeting">Hello, I'm</div>
-                <h1 class="hero-name">Gabby Umba</h1>
+                <h1 class="hero-name">Gabby <span>Umba</span></h1>
                 <p class="hero-description">
                     I am Software Engineer, web developer. I am passionate about computers, programming and new technologies in general. I consider myself a self-taught person with a thirst for learning new things and solving problems in my company.
                 </p>
-                <a href="portfolio.html" class="hero-btn">
-                    View My Work <i class="fas fa-arrow-right"></i>
+                <a href="portfolio.html" class="btn primary-btn">
+                    <i class="fas fa-arrow-right"></i> View My Work
                 </a>
+            </div>
+            <div class="hero-image fade-in-up">
+                <img src="profil.jpeg" alt="Gabby Umba" onerror="this.src='https://via.placeholder.com/400x400'">
             </div>
         </div>
     </section>
-
+    
     <section class="work-section">
         <div class="container">
             <h2 class="section-title fade-in-up">My Work</h2>
             <div class="work-grid">
-                <div class="work-item">
-                    <div class="work-image">
+                <div class="work-card fade-in-up">
+                    <div class="work-image" style="background: linear-gradient(135deg, #00D4AA 0%, #00B894 100%);">
                         <i class="fas fa-laptop-code"></i>
                     </div>
-                    <div class="work-info">
+                    <div class="work-content">
                         <h3>Web Application</h3>
-                        <p>E-commerce Platform</p>
+                        <p>E-commerce platform with real-time inventory</p>
                         <div class="work-tags">
                             <span>React</span>
                             <span>Node.js</span>
@@ -446,26 +543,26 @@
                         </div>
                     </div>
                 </div>
-                <div class="work-item">
-                    <div class="work-image">
+                <div class="work-card fade-in-up">
+                    <div class="work-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <div class="work-info">
+                    <div class="work-content">
                         <h3>Mobile App</h3>
-                        <p>Fitness Tracker</p>
+                        <p>Fitness tracker with AI coaching</p>
                         <div class="work-tags">
                             <span>React Native</span>
                             <span>Firebase</span>
                         </div>
                     </div>
                 </div>
-                <div class="work-item">
-                    <div class="work-image">
+                <div class="work-card fade-in-up">
+                    <div class="work-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
                         <i class="fas fa-cloud"></i>
                     </div>
-                    <div class="work-info">
+                    <div class="work-content">
                         <h3>Cloud Architecture</h3>
-                        <p>AWS Microservices</p>
+                        <p>AWS microservices for scalable applications</p>
                         <div class="work-tags">
                             <span>AWS</span>
                             <span>Docker</span>
@@ -481,13 +578,13 @@
         <div class="container">
             <h2 class="section-title fade-in-up">My Work</h2>
             <div class="work-grid">
-                <div class="work-item">
-                    <div class="work-image">
+                <div class="work-card fade-in-up">
+                    <div class="work-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
                         <i class="fas fa-database"></i>
                     </div>
-                    <div class="work-info">
+                    <div class="work-content">
                         <h3>Database Design</h3>
-                        <p>Scalable Data Architecture</p>
+                        <p>Scalable data architecture for big data</p>
                         <div class="work-tags">
                             <span>PostgreSQL</span>
                             <span>Redis</span>
@@ -495,30 +592,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="work-item">
-                    <div class="work-image">
+                <div class="work-card fade-in-up">
+                    <div class="work-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <div class="work-info">
-                        <h3>Security</h3>
-                        <p>Penetration Testing</p>
+                    <div class="work-content">
+                        <h3>Cybersecurity</h3>
+                        <p>Penetration testing and security audit</p>
                         <div class="work-tags">
                             <span>OAuth</span>
                             <span>JWT</span>
-                            <span>HTTPS</span>
+                            <span>Encryption</span>
                         </div>
                     </div>
                 </div>
-                <div class="work-item">
-                    <div class="work-image">
+                <div class="work-card fade-in-up">
+                    <div class="work-image" style="background: linear-gradient(135deg, #5f2c82 0%, #49a09d 100%);">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <div class="work-info">
+                    <div class="work-content">
                         <h3>Analytics</h3>
-                        <p>Real-time Dashboard</p>
+                        <p>Real-time dashboard with D3.js</p>
                         <div class="work-tags">
                             <span>D3.js</span>
                             <span>WebSocket</span>
+                            <span>Python</span>
                         </div>
                     </div>
                 </div>
@@ -528,23 +626,36 @@
 
     <footer class="contact-footer">
         <div class="container">
-            <a href="mailto:gabbyumba@email.com" class="contact-email">gabbyumba@email.com</a>
+            <a href="mailto:gabbyumba344@gmail.com" class="contact-email">gabbyumba344@gmail.com</a>
             <div class="social-links">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Gabby Umba. All rights reserved.
             </div>
         </div>
     </footer>
 
     <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
         // Active link highlighting
         const currentLocation = window.location.pathname.split('/').pop() || 'index.html';
-        const navLinks = document.querySelectorAll('.nav-links a');
+        const navLinks = document.querySelectorAll('nav a');
         
         navLinks.forEach(link => {
-            if(link.getAttribute('href') === currentLocation) {
+            if (link.getAttribute('href') === currentLocation) {
                 link.classList.add('active');
             }
         });
@@ -552,26 +663,14 @@
         // Scroll animation
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('fade-in-up');
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.work-item, .section-title').forEach(el => {
+        document.querySelectorAll('.fade-in-up').forEach(el => {
             observer.observe(el);
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if(window.scrollY > 100) {
-                nav.style.background = 'rgba(255, 255, 255, 0.98)';
-                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-            } else {
-                nav.style.background = 'rgba(255, 255, 255, 0.95)';
-                nav.style.boxShadow = 'none';
-            }
         });
     </script>
 </body>
